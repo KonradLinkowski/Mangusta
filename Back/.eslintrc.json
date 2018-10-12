@@ -3,7 +3,8 @@
         "browser": true,
         "es6": true,
         "commonjs": true,
-        "node": true
+        "node": true,
+        "mocha": true
     },
     "extends": "eslint:recommended",
     "parserOptions": {
@@ -69,7 +70,7 @@
         "eqeqeq": "error",
         "func-call-spacing": "error",
         "func-name-matching": "error",
-        "func-names": "error",
+        "func-names": "off",
         "func-style": "error",
         "function-paren-newline": "error",
         "generator-star-spacing": "error",
@@ -110,7 +111,7 @@
             "error",
             "separate-lines"
         ],
-        "multiline-ternary": "error",
+        "multiline-ternary": "off",
         "new-cap": "off",
         "new-parens": "error",
         "newline-after-var": [
@@ -145,7 +146,7 @@
         "no-implicit-globals": "error",
         "no-implied-eval": "error",
         "no-inline-comments": "error",
-        "no-invalid-this": "error",
+        "no-invalid-this": "off",
         "no-iterator": "error",
         "no-label-var": "error",
         "no-labels": "error",
@@ -193,7 +194,7 @@
         "no-sync": "off",
         "no-tabs": "error",
         "no-template-curly-in-string": "error",
-        "no-ternary": "error",
+        "no-ternary": "off",
         "no-throw-literal": "error",
         "no-trailing-spaces": "error",
         "no-undef-init": "error",
@@ -257,7 +258,10 @@
         "sort-keys": "off",
         "sort-vars": "error",
         "space-before-blocks": "error",
-        "space-before-function-paren": "error",
+        "space-before-function-paren": [
+            "error",
+            "never"
+        ],
         "space-in-parens": [
             "error",
             "never"
