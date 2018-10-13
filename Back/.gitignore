@@ -1,4 +1,4 @@
 # ignore node modules
 node_modules
 #ignore secret keys
-src/config/default.json
+config/default.json
