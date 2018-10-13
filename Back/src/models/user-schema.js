@@ -38,7 +38,6 @@ const hashPassword = function(next) {
 }
 
 const comparePassword = function(candidatePassword, cb) {
-  console.log(candidatePassword, this.password)
   bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
     if (err) {
       cb(err)
