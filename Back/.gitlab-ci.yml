@@ -1,0 +1,23 @@
+cache:
+  paths:
+  - node_modules/
+
+services:
+  - mongo
+
+variables:
+  MANGUSTA_MONGO_DEV: 'mongodb://admin:admin1234@ds259111.mlab.com:59111/mangusta'
+  NODE_ENV: 'test'
+
+stages:
+  - test
+
+testing:
+  image: node
+  stage: test
+  variables:
+    NODE_ENV: test
+  before_script:
+    - npm install
+  script:
+    - npm test
