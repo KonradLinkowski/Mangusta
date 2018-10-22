@@ -10,6 +10,8 @@ const PORT = process.env.PORT || 3000
 
 const production = process.env.NODE_ENV === 'production'
 
+app.use('/', require('./routes/product-routes'))
+
 // set mongoose promise handling
 mongoose.Promise = global.Promise
 
