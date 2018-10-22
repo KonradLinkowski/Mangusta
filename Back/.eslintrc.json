@@ -32,7 +32,6 @@
         "block-spacing": "error",
         "brace-style": "error",
         "callback-return": "error",
-        "camelcase": "error",
         "capitalized-comments": [
             "error",
             "never"
@@ -232,7 +231,6 @@
         "padding-line-between-statements": "error",
         "prefer-arrow-callback": "error",
         "prefer-const": "error",
-        "prefer-destructuring": "error",
         "prefer-numeric-literals": "error",
         "prefer-object-spread": "error",
         "prefer-promise-reject-errors": "error",
