@@ -47,9 +47,14 @@ const comparePassword = function(candidatePassword, cb) {
   })
 }
 
+const generateToken = function() {
+  return 'test token'
+}
+
 UserSchema.pre('save', hashPassword)
 
 UserSchema.methods.comparePassword = comparePassword
+UserSchema.methods.generateToken = generateToken
 
 const User = mongoose.model('user', UserSchema, 'users')
 
