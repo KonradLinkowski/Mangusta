@@ -9,7 +9,6 @@ const app = express()
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const passport = require('passport')
-const jwt = require('json-web-token')
 
 const PORT = process.env.PORT || 3000
 
@@ -26,7 +25,10 @@ const production = process.env.NODE_ENV === 'production'
 mongoose.Promise = global.Promise
 
 // connect to the database
-mongoose.connect(config.database, { useNewUrlParser: true })
+mongoose.connect(
+  production ? config.get('database.prod') : config.get('database.dev'),
+  { useNewUrlParser: true }
+)
 
 app.listen(PORT, () => {
   console.log(`Server is running at ${PORT}`)
