@@ -38,7 +38,7 @@ router.route('/users/login').post((req, res) => {
         } else if (isMatched) {
           res.status(200)
           res.json({
-              "token": user.generateToken()
+              "token": user.generateToken(user)
           })
         } else {
          res.status(401).send('Invalid password')
