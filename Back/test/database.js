@@ -4,6 +4,7 @@ const should = require('chai').should()
 const config = require('config')
 const mongoose = require('mongoose')
 const User = require('../src/models/user-schema')
+const Product = require('../src/models/product-schema')
 
 describe('database', () => {
   it('should connect to the database', async() => {
@@ -80,5 +81,22 @@ describe('database', () => {
       isMatch.should.equal(false)
     })
     await User.findByIdAndDelete(user._id)
+  })
+
+  it('creates product in database', async() => {
+    const product = {
+      name: 'Cool ironing tool',
+      description: 'Very suitable',
+      quantity: 10,
+      category: ['agd', 'rtv', 'kitchen', 'ironing']
+    }
+    const schema = new Product(product)
+    let error = null
+    try {
+      await schema.save()
+    } catch (err) {
+      error = err
+    }
+    should.not.exist(error)
   })
 })
