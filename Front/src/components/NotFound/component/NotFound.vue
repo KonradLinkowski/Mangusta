@@ -1,0 +1,5 @@
+<template>
+  <section id='NotFound'>
+    Sorry, we could not find your page :(
+  </section>
+</template>
