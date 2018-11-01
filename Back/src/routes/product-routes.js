@@ -6,10 +6,11 @@ const Product = require('../models/product-schema')
 
 router.route('/product').get(async (req, res) => {
     const search = req.query.search || ''
-    const category = req.query.category || ['']
+    // ka¿dy produkt ma mieæ domyœlnie TAG product, 
+    //   dziêki temu mo¿na je wyszukiwaæ bez podania tagu
+    const category = req.query.category || ['product']
     const priceMin = req.query.priceMin || 0
     const priceMax = req.query.priceMax || Number.MAX_VALUE
-    const sort = req.query.sort
     const dir = req.query.dir || 1
 
     res.json(await Product.find({

@@ -84,11 +84,12 @@ describe('database', () => {
   })
 
   it('creates product in database', async() => {
-    const product = {
+      const product = {
+      price: Math.random(),
       name: 'Cool ironing tool',
       description: 'Very suitable',
       quantity: 10,
-      category: ['agd', 'rtv', 'kitchen', 'ironing']
+      category: ['product','agd', 'rtv', 'kitchen', 'ironing']
     }
     const schema = new Product(product)
     let error = null
@@ -96,7 +97,7 @@ describe('database', () => {
       await schema.save()
     } catch (err) {
       error = err
-    }
+      }
     should.not.exist(error)
   })
 })
