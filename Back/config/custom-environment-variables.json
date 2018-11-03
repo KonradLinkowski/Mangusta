@@ -2,5 +2,6 @@
   "database": {
     "prod": "MANGUSTA_MONGO_PROD",
     "dev": "MANGUSTA_MONGO_DEV"
-  }
+  },
+  "jwt": "MANGUSTA_JWT"
 }

@@ -2,4 +2,3 @@
 node_modules
 #ignore secret keys
 config/default.json
-.vs/

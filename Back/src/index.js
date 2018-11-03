@@ -6,7 +6,18 @@ const mongoose = require('mongoose')
 const express = require('express')
 const app = express()
 
+const bodyParser = require('body-parser')
+const morgan = require('morgan')
+const passport = require('passport')
+
 const PORT = process.env.PORT || 3000
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json)
+app.use(morgan('dev'))
+
+app.use(passport.initialize())
+require('../config/passport')(passport)
 
 const production = process.env.NODE_ENV === 'production'
 

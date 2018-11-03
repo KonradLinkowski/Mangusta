@@ -1,0 +1,7 @@
+{
+  "database": {
+    "prod": "",
+    "dev": "mongodb://localhost:27017/mangusta"
+  },
+  "jwt": "bardzosekretnykluczmangusty"
+}

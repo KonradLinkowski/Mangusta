@@ -4,10 +4,10 @@ const express = require('express')
 const router = express.Router()
 const Product = require('../models/product-schema')
 
-router.route('/product').get(async (req, res) => {
+router.route('/product').get(async(req, res) => {
     const search = req.query.search || ''
-    // ka¿dy produkt ma mieæ domyœlnie TAG product, 
-    //   dziêki temu mo¿na je wyszukiwaæ bez podania tagu
+    // kaÅ¼dy produkt ma mieÄ‡ domyÅ›lnie TAG product
+    //   dziÄ™ki temu moÅ¼na je wyszukiwa bez podania tagu
     const category = req.query.category || ['product']
     const priceMin = req.query.priceMin || 0
     const priceMax = req.query.priceMax || Number.MAX_VALUE
