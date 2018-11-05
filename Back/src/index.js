@@ -13,7 +13,7 @@ const passport = require('passport')
 const PORT = process.env.PORT || 3000
 
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json)
+app.use(bodyParser.json())
 app.use(morgan('dev'))
 
 app.use(passport.initialize())
@@ -29,7 +29,8 @@ mongoose.Promise = global.Promise
 // connect to the database
 mongoose.connect(
   production ? config.get('database.prod') : config.get('database.dev'),
-  { useNewUrlParser: true }
+  { useNewUrlParser: true,
+    useCreateIndex: true }
 )
 
 app.listen(PORT, () => {
