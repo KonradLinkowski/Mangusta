@@ -1,7 +1,7 @@
 'use strict'
 const bcrypt = require('bcryptjs')
 const mongoose = require('mongoose')
-const config = require('../../config')
+const config = require('config')
 const jwt = require('jsonwebtoken')
 const SALT_WORK_FACTOR = 10
 
@@ -50,7 +50,7 @@ const comparePassword = function(candidatePassword, cb) {
 }
 
 const generateToken = function(user) {
-  return jwt.sign(user, config.secret, {
+  return jwt.sign(user, config.get('jwt'), {
     expiresIn: 3600
   })
 }
