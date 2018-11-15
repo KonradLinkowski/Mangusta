@@ -1,5 +1,0 @@
-<template>
-  <h1 id='Settings'>
-    Yeyyyy! Thanks to our page you will be able to change sth some day!
-  </h1>
-</template>

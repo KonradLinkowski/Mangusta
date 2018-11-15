@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // page components
-import Home from '../components/Home'
-import Login from '../components/Login'
-import Register from '../components/Register'
-import Settings from '../components/Settings'
-import ProductList from '../components/ProductList'
-import Product from '../components/Product'
-import NotFound from '../components/NotFound'
+import Home from '../components/Home/Home'
+import Login from '../components/Login/Login'
+import Register from '../components/Register/Register'
+import Settings from '../components/Settings/Settings'
+import ProductList from '../components/ProductList/ProductList'
+import Product from '../components/Product/Product'
+import NotFound from '../components/NotFound/NotFound'
 
 Vue.use(Router)
 

@@ -21,11 +21,11 @@
 </template>
 
 <script>
-import Footer from './components/Footer'
+import Footer from './components/Footer/Footer'
 
 export default {
   components: {
-    'Footer': Footer
+    Footer
   },
   // computed: {
   //   counter () { return this.$store.state.counter }

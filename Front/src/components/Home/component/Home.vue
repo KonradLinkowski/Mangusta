@@ -1,5 +1,0 @@
-<template>
-  <section id='Home'>
-    <h1>Mongoose Home component</h1>
-  </section>
-</template>
