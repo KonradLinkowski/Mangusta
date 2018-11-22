@@ -44,7 +44,7 @@ export const getProductList = (type) => {
         resolve()
       })
       .catch(error => {
-        dispatch(this.$notify(serverError))
+        this.$notify(serverError)
         resolve(error)
       })
     })
@@ -60,7 +60,7 @@ export const getProduct = (type, uuid) => {
         resolve()
       })
       .catch(error => {
-        dispatch(this.$notify(serverError))
+        this.$notify(serverError)
         resolve(error)
       })
     })
@@ -73,11 +73,11 @@ export const addProduct = (data) => {
       axios.get(`${protocol}://${origin}/product/products`, data)
       .then(response => {
         dispatch(updateProductListAction())
-        dispatch(this.$notify(productAddSuccess))
+        this.$notify(productAddSuccess)
         resolve(response)
       })
       .catch(error => {
-        dispatch(this.$notify(productAddError))
+        this.$notify(productAddError)
         resolve(error)
       })
     })
@@ -90,11 +90,11 @@ export const updateProduct = (uuid, data) => {
       axios.get(`${protocol}://${origin}/product/products/${uuid}`, data)
       .then(response => {
         dispatch(updateProductListAction())
-        dispatch(this.$notify(productUpdateSuccess))
+        this.$notify(productUpdateSuccess)
         resolve(response)
       })
       .catch(error => {
-        dispatch(this.$notify(productUpdateError))
+        this.$notify(productUpdateError)
         resolve(error)
       })
     })
@@ -107,11 +107,11 @@ export const deleteProduct = (uuid) => {
       axios.get(`${protocol}://${origin}/product/products/${uuid}`)
       .then(response => {
         dispatch(updateProductListAction())
-        dispatch(this.$notify(productDeleteSuccess))
+        this.$notify(productDeleteSuccess)
         resolve(response)
       })
       .catch(error => {
-        dispatch(this.$notify(productDeleteError))
+        this.$notify(productDeleteError)
         resolve(error)
       })
     })
