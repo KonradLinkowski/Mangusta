@@ -8,15 +8,7 @@ import router from './router'
 Vue.use(Vuex)
 Vue.use(Notifications)
 
-const store = new Vuex.Store({
-  // state: {
-  //   counter: 0
-  // },
-  // mutations: {
-  //   increment: (state) => { state.counter++ },
-  //   decrement: (state) => { state.counter-- }
-  // }
-})
+const store = new Vuex.Store({})
 
 new Vue({
   el: '#app',
@@ -24,20 +16,3 @@ new Vue({
   router,
   render: h => h(App)
 })
-
-// new Vue({
-//   el: '#productList',
-//   data: {
-//     productList: []
-//   },
-//   created: () => {
-//     var vm = this
-//     fetch('https://jsonplaceholder.typicode.com/todos')
-//     .then(function (response) {
-//       return response.json()
-//     })
-//     .then(function (data) {
-//       vm.productList = data
-//     })
-//   }
-// })
