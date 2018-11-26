@@ -63,10 +63,7 @@
                 "allowKeywords": true
             }
         ],
-        "eol-last": [
-            "error",
-            "never"
-        ],
+        "eol-last": "off",
         "eqeqeq": "error",
         "func-call-spacing": "error",
         "func-name-matching": "error",

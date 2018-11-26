@@ -1,4 +1,6 @@
 # ignore node modules
-node_modules
+node_modules/
 #ignore secret keys
 config/local.json
+#ignore visual studio
+.vs/
