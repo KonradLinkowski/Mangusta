@@ -12,12 +12,11 @@ export default {
     }
   },
   created: function () {
-    var vm = this
-
     fetch(`https://jsonplaceholder.typicode.com/todos/`)
       .then(response => response.json())
       .then(json => {
-        vm.productList = json
+        this.productList = json
+        console.log(this.productList)
       })
       .catch(err => console.log(err))
   }

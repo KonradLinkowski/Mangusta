@@ -4,9 +4,21 @@
 </style>
 <script>
 import ProductList from '../ProductList/ProductList'
+import Product from '../Product/Product'
 export default {
   components: {
-    ProductList
+    ProductList,
+    Product
+  },
+  data() {
+    return {
+      product: {
+        "userId": 1,
+        "id": 1,
+        "title": "Spawarka kątowa",
+        "price": 10.00
+      }
+    }
   }
 }
 </script>
