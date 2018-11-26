@@ -12,7 +12,7 @@ export default {
     }
   },
   created: function () {
-    fetch(`https://jsonplaceholder.typicode.com/todos/`)
+    fetch(`http://localhost:3000/product/?size=10`)
       .then(response => response.json())
       .then(json => {
         this.productList = json

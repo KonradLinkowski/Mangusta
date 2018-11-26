@@ -15,13 +15,13 @@ export default {
       productList: [{
         "userId": 1,
         "id": 1,
-        "title": "Spawarka kątowa",
+        "name": "Spawarka kątowa",
         "price": 10.00
       },
       {
         "userId": 1,
         "id": 2,
-        "title": "Szczoteczka do zembuf",
+        "name": "Szczoteczka do zembuf",
         "price": 5.00
       }]
     }
