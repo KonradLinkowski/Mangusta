@@ -1,6 +1,4 @@
 <section id='ProductList'>
     <p>Product List Component</p>
-    <section id='products-list' v-for='(product, id) in productList' :key='id'>
-        <Product :product='product'/>
-    </section>
+    <Product v-for='product in productList' :key='product.id' :product='product'/>
 </section>

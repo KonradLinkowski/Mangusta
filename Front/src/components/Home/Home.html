@@ -1,6 +1,6 @@
 <section id='Home'>
   <h1>Mongoose Home component</h1>
 
-  <Product v-bind:product='product'></Product>
+  <Product v-for='product in productList' :key='product.id' :product='product'></Product>
   <ProductList></ProductList>
 </section>
