@@ -39,7 +39,7 @@ export default new Router({
       component: ProductList
     },
     {
-      path: '/products/products',
+      path: '/products/:id',
       name: 'product',
       component: Product
     },
