@@ -24,3 +24,20 @@ new Vue({
   router,
   render: h => h(App)
 })
+
+// new Vue({
+//   el: '#productList',
+//   data: {
+//     productList: []
+//   },
+//   created: () => {
+//     var vm = this
+//     fetch('https://jsonplaceholder.typicode.com/todos')
+//     .then(function (response) {
+//       return response.json()
+//     })
+//     .then(function (data) {
+//       vm.productList = data
+//     })
+//   }
+// })

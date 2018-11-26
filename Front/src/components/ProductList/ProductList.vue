@@ -3,7 +3,9 @@
   @import './ProductList.scss'
 </style>
 <script>
-export default {
-  
+import Product from '../Product/Product'
+export default {  
+  props: ['productList'],
+  components: Product
 }
 </script>

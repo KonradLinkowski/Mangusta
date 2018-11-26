@@ -39,7 +39,7 @@ export default new Router({
       component: ProductList
     },
     {
-      path: '/products/:id',
+      path: '/products/products',
       name: 'product',
       component: Product
     },
@@ -48,7 +48,7 @@ export default new Router({
       name: '404',
       component: NotFound
     },
-    { // don't know yet will it work, need to check it - the idea is "if !path -> go to 404 page"
+    {
       path: '*',
       redirect: '404',
     }

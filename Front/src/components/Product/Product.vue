@@ -4,6 +4,6 @@
 </style>
 <script>
 export default {
-  
+  props: ['product']
 }
 </script>
