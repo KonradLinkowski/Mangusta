@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// page components
 import Home from '../components/Home/Home'
 import Login from '../components/Login/Login'
 import Register from '../components/Register/Register'
@@ -48,7 +47,7 @@ export default new Router({
       name: '404',
       component: NotFound
     },
-    { // don't know yet will it work, need to check it - the idea is "if !path -> go to 404 page"
+    {
       path: '*',
       redirect: '404',
     }
