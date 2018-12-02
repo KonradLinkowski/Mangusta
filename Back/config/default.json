@@ -2,7 +2,6 @@
   "database": {
     "prod": "mongodb://admin:admin1234@ds259111.mlab.com:59111/mangusta",
     "dev": "mongodb://admin:admin1234@ds259111.mlab.com:59111/mangusta"
-
   },
   "jwt": "bardzosekretnykluczmangusty"
 }

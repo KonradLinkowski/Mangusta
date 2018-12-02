@@ -20,4 +20,8 @@ router.route('/product').get(async(req, res) => {
     }).sort({ price: dir }))
 })
 
+router.route('/product/:id').get(async(req, res) => {
+        res.json(await Product.findById(req.params.id))
+})
+
 module.exports = router
