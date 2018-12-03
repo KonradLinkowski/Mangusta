@@ -15,7 +15,7 @@ export default {
     fetch(`http://localhost:3000/product/?size=10`, {
       method: 'GET',
       headers: {
-        'Access-Control-Allow-Origin': 'http://localhost:3000/product/'
+        'Access-Control-Allow-Origin': 'http://localhost:3000/'
       }
     })
       .then(response => response.json())
