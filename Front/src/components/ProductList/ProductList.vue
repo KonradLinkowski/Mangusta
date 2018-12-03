@@ -5,7 +5,7 @@
 <script>
 import Product from '../Product/Product'
 export default {
-  components: Product,
+  components: { Product },
   data() {
     return {
       productList: []
