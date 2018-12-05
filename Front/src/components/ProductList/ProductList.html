@@ -1,4 +1,4 @@
-<section>
-  <product v-for="item in list" :key="item.index" :product="item"></product>
-  <infinite-loading @infinite="infiniteHandler"></infinite-loading>
+<section id='ProductList'>
+    <p>Product List Component</p>
+    <Product v-for='product in productList' :key='product.id' :product='product'></Product>
 </section>

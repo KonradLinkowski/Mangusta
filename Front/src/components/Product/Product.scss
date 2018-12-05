@@ -1,36 +1,24 @@
-.product {
-  color: black;
-  background: white;
-  display: flex;
-  padding: 10px;
-  margin: 5px 0;
-}
-.name {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-.info {
-  display: flex;
-  flex-direction: column;
-}
-.title {
+#Product {
+  width: 100%;
   text-align: left;
-  margin: 5px;
-}
-.date {
-  margin: 5px;
-}
-.price {
-  margin: 5px;
-}
-
-.tags {
-  display: flex;
-}
-
-.tag {
   padding: 5px;
-  margin: 0 5px;
-  background: lightblue;
+
+  img {
+    width: 100px;
+    height: 70px;
+    display: inline-block;
+    border: 1px solid black;
+    vertical-align: middle;
+    background-color: lightgray
+  }
+
+  p {
+    display: inline;
+    margin: 0 1em;
+  }
+}
+
+#Product:hover {
+  background-color: aliceblue;
+  color: black;
 }

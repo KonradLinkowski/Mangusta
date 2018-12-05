@@ -3,41 +3,27 @@
   @import './ProductList.scss'
 </style>
 <script>
-import axios from 'axios'
-import InfiniteLoading from 'vue-infinite-loading'
 import Product from '../Product/Product'
 export default {
+  components: { Product },
   data() {
     return {
-      list: [],
-      index: 0
-    };
-  },
-  methods: {
-    infiniteHandler($state) {
-      setTimeout(() => {
-        this.list.push(...this.getNewList(10))
-        $state.loaded()
-      }, 1000)
-    },
-    getNewList(n) {
-      return new Array(n).fill(0).map(() => {
-        return {
-          index: this.index++,
-          name: Math.random().toString(),
-          tags: ['avc', '23123', 'toyota'],
-          date: new Date(),
-          price: Math.round(Math.random() * 100) / 100
-        }
-      })
+      productList: []
     }
   },
-  mounted() {
-    this.list.push(...this.getNewList(10))
-  },
-  components: {
-    Product,
-    InfiniteLoading
+  created: function () {
+    fetch(`http://localhost:3000/product/?size=10`, {
+      method: 'GET',
+      headers: {
+        'Access-Control-Allow-Origin': 'http://localhost:3000/'
+      }
+    })
+      .then(response => response.json())
+      .then(json => {
+        this.productList = json
+        console.log(this.productList)
+      })
+      .catch(err => console.log(err))
   }
 }
 </script>

@@ -20,6 +20,10 @@ router.route('/product').get(async(req, res) => {
     }).sort({ price: dir }))
 })
 
+router.route('/product/:id').get(async(req, res) => {
+        res.json(await Product.findById(req.params.id))
+})
+
 router.route('/product').post(async(req, res) => {
     if (!req.body) {
         return res.status(422).send('Pass body')
