@@ -1,5 +1,5 @@
-export const origin = 'localhost:3000' // in future ere will be real name
-export const protocol = '' // in future ere will be real protocol i.e. "http://"
+export const origin = 'localhost:3000' // in future there will be real name
+export const protocol = 'http' // in future there will be real protocol i.e. "http://"
 
 export const notification_system_labels = {
   title: {
@@ -12,7 +12,7 @@ export const notification_system_labels = {
     product_delete_error: 'Product Delete'
   },
   text: {
-    server_error: 'Our server is down, take yourselph a breake ;)',
+    server_error: 'Our server is down, take yourself a break ;)',
     product_add_success: 'Product addition success!',
     product_add_error: 'Product addition failure!',
     product_update_success: 'Product update success!',

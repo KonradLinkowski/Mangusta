@@ -4,19 +4,10 @@ import Notifications from 'vue-notification'
 
 import App from './App.vue'
 import router from './router'
+import store from './store'
 
 Vue.use(Vuex)
 Vue.use(Notifications)
-
-const store = new Vuex.Store({
-  // state: {
-  //   counter: 0
-  // },
-  // mutations: {
-  //   increment: (state) => { state.counter++ },
-  //   decrement: (state) => { state.counter-- }
-  // }
-})
 
 new Vue({
   el: '#app',

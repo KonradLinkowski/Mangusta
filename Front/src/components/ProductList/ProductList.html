@@ -1,3 +1,4 @@
-<h1 id='ProductList'>
-  Project list
-</h1>
+<section>
+  <product v-for="item in list" :key="item.index" :product="item"></product>
+  <infinite-loading @infinite="infiniteHandler"></infinite-loading>
+</section>

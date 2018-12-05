@@ -17,6 +17,7 @@
       <router-view></router-view>
     </section>
     <Footer></Footer>
+    <notifications group="product" />
   </section>
 </template>
 

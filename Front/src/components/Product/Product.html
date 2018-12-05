@@ -1,3 +1,12 @@
-<section id='Product'>
-  <h1>Product</h1>
+<section class="product">
+  <div class="name">
+    <h3 class="title">{{ product.name }}</h3>
+    <div class="tags">
+      <p class="tag" v-for="tag in product.tags" :key="tag">{{ tag }}</p>
+    </div>
+  </div>
+  <div class="info">
+    <p class="price">{{ product.price }} zł</p>
+    <p class="date">{{ date }}</p>
+  </div>
 </section>

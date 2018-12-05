@@ -6,6 +6,7 @@ import Login from '../components/Login/Login'
 import Register from '../components/Register/Register'
 import Settings from '../components/Settings/Settings'
 import ProductList from '../components/ProductList/ProductList'
+import AddProduct from '../components/AddProduct/AddProduct'
 import Product from '../components/Product/Product'
 import NotFound from '../components/NotFound/NotFound'
 
@@ -37,6 +38,10 @@ export default new Router({
       path: '/products',
       name: 'products',
       component: ProductList
+    },
+    {
+      path: '/addproduct',
+      component: AddProduct
     },
     {
       path: '/products/:id',

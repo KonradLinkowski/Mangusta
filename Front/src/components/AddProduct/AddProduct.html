@@ -1,0 +1,29 @@
+<article class="form">
+  <div class="texts">
+    <label for="product-name" class="label text-label">
+      Name
+      <input id="product-name" v-model="product.name" type="text" class="text-input">
+    </label>
+    <label for="product-description" class="label text-label">
+      Description
+      <input id="product-description" v-model="product.description" type="text" class="text-input">
+    </label>
+  </div>
+  <div class="numbers">
+    <label for="product-price" class="label text-label">
+      Price
+      <input id="product-price" v-model="product.price" type="number" class="text-input">
+    </label>
+    <label for="product-quantity" class="label text-label">
+      Quantity
+      <input id="product-quantity" v-model="product.quantity" type="number" class="text-input">
+    </label>
+  </div>
+  <div class="tags">
+    <label :for="'product-tag-' + tag" v-for="tag in tags" :key="tag" class="label checkbox-label">
+      {{ tag }}
+      <input :id="'product-tag-' + tag" v-model="product.tags" type="checkbox" :value="tag" class="checkbox">
+    </label>
+  </div>
+  <button @click="createProduct()" class="button">Create</button>
+</article>

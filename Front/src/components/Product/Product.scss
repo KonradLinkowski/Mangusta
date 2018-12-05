@@ -1,7 +1,36 @@
-#Product {
-  width: 100%;
-  margin: 0;
-  border: 0;
-  outline: 0;
-  background-color: aqua;
+.product {
+  color: black;
+  background: white;
+  display: flex;
+  padding: 10px;
+  margin: 5px 0;
+}
+.name {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+}
+.title {
+  text-align: left;
+  margin: 5px;
+}
+.date {
+  margin: 5px;
+}
+.price {
+  margin: 5px;
+}
+
+.tags {
+  display: flex;
+}
+
+.tag {
+  padding: 5px;
+  margin: 0 5px;
+  background: lightblue;
 }
