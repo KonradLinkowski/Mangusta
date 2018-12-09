@@ -12,7 +12,7 @@ export default {
   },
   methods: {
     addToCart(productID) {
-      // TODO add to cart
+      this.$store.dispatch('cart/addToCart', this.product)
     },
     async loadProduct(productID) {
       try {
