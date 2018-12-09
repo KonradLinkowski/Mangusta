@@ -8,22 +8,34 @@ export default {
   components: { Product },
   data() {
     return {
-      productList: []
+      productList: [],
+      searchTerm: "",
+      category: []
     }
   },
   created: function () {
-    fetch(`http://localhost:3000/product/?size=10`, {
-      method: 'GET',
-      headers: {
-        'Access-Control-Allow-Origin': 'http://localhost:3000/'
+    this.searchFromDB(this.searchTerm)
+  },methods: {
+    search: function (event) {
+      // `event` is the native DOM event
+      if (event) {
+        this.searchFromDB(this.searchTerm)
       }
-    })
-      .then(response => response.json())
-      .then(json => {
-        this.productList = json
-        console.log(this.productList)
+    }, searchFromDB: function(searchTerm = "", category = ["product"]) {
+      fetch(
+        `http://localhost:3000/product/?search=${searchTerm}&category=${category}`, {
+        method: 'GET',
+        headers: {
+          'Access-Control-Allow-Origin': 'http://localhost:3000/'
+        }
       })
-      .catch(err => console.log(err))
+        .then(response => response.json())
+        .then(json => {
+          this.productList = json
+          console.log(this.productList)
+        })
+        .catch(err => console.log(err))
+    }
   }
 }
 </script>

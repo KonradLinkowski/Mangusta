@@ -1,4 +1,8 @@
 <section id='ProductList'>
     <p>Product List Component</p>
-    <Product v-for='product in productList' :key='product.id' :product='product'></Product>
+    <input v-model="searchTerm" placeholder="search something">
+    <Button v-on:click="search">search</Button>
+    <Product v-for='product in productList' 
+    :key='product.id' 
+    :product='product'></Product>
 </section>
