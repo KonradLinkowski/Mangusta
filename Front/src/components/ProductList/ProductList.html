@@ -1,7 +1,15 @@
 <section id='ProductList'>
     <p>Product List Component</p>
-    <input v-model="searchTerm" placeholder="search something">
+    <input v-model="searchTerm" 
+      placeholder="search something"
+      id="search-term">
     <Button v-on:click="search">search</Button>
+    <br />
+    Cena: 
+    <input v-model="priceMin" placeholder="od" class="price-option">
+     - 
+    <input v-model="priceMax" placeholder="do" class="price-option">
+    
     <Product v-for='product in productList' 
     :key='product.id' 
     :product='product'></Product>

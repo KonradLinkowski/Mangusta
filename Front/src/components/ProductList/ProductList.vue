@@ -10,7 +10,9 @@ export default {
     return {
       productList: [],
       searchTerm: "",
-      category: []
+      category: [],
+      priceMin: "",
+      priceMax: ""
     }
   },
   created: function () {
@@ -19,11 +21,15 @@ export default {
     search: function (event) {
       // `event` is the native DOM event
       if (event) {
-        this.searchFromDB(this.searchTerm)
+        this.searchFromDB(this.searchTerm, this.priceMin, this.priceMax)
       }
-    }, searchFromDB: function(searchTerm = "", category = ["product"]) {
+    }, searchFromDB: function(
+        searchTerm = "",
+        priceMin = "",
+        priceMax = "",
+        category = ["product"]) {
       fetch(
-        `http://localhost:3000/product/?search=${searchTerm}&category=${category}`, {
+        `http://localhost:3000/product/?search=${searchTerm}&priceMin=${priceMin}&priceMax=${priceMax}&category=${category}`, {
         method: 'GET',
         headers: {
           'Access-Control-Allow-Origin': 'http://localhost:3000/'
