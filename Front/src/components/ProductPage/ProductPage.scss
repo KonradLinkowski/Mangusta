@@ -1,0 +1,24 @@
+#Product {
+  width: 100%;
+  text-align: left;
+  padding: 5px;
+
+  img {
+    width: 100px;
+    height: 70px;
+    display: inline-block;
+    border: 1px solid black;
+    vertical-align: middle;
+    background-color: lightgray
+  }
+
+  p {
+    display: inline;
+    margin: 0 1em;
+  }
+}
+
+#Product:hover {
+  background-color: aliceblue;
+  color: black;
+}

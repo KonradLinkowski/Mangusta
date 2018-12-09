@@ -1,0 +1,7 @@
+<article v-if="product" id='Product'>
+  <img src='../../assets/mongoose_256.png' alt='Product image'>
+  <p>{{ product.name }} | Cena: <b>{{Number((product.price).toFixed(2))}}</b></p>
+  <section>
+    <button @click="addToCart(product._id)">Dodaj do koszyka</button>
+  </section>
+</article>

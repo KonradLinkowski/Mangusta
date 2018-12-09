@@ -7,7 +7,7 @@ import Register from '../components/Register/Register'
 import Settings from '../components/Settings/Settings'
 import ProductList from '../components/ProductList/ProductList'
 import AddProduct from '../components/AddProduct/AddProduct'
-import Product from '../components/Product/Product'
+import ProductPage from '../components/ProductPage/ProductPage'
 import NotFound from '../components/NotFound/NotFound'
 
 Vue.use(Router)
@@ -45,8 +45,7 @@ export default new Router({
     },
     {
       path: '/products/:id',
-      name: 'product',
-      component: Product
+      component: ProductPage
     },
     {
       path: '/404',

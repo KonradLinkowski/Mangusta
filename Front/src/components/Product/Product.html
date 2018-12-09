@@ -1,4 +1,6 @@
 <article id='Product'>
   <img src='../../assets/mongoose_256.png' alt='Product image'>
-  <p>{{ product.name }} | Cena: <b>{{Number((product.price).toFixed(1))}}</b></p>
+  <router-link :to="`products/${ product._id }`">
+    <p>{{ product.name }} | Cena: <b>{{Number((product.price).toFixed(2))}}</b></p>
+  </router-link>
 </article>
