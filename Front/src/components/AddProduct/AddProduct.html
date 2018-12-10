@@ -12,11 +12,11 @@
   <div class="numbers">
     <label for="product-price" class="label text-label">
       Price
-      <input id="product-price" v-model="product.price" type="number" class="text-input">
+      <input id="product-price" v-model="product.price" type="number" class="text-input" min="0.01" max="10000" step="0.01">
     </label>
     <label for="product-quantity" class="label text-label">
       Quantity
-      <input id="product-quantity" v-model="product.quantity" type="number" class="text-input">
+      <input id="product-quantity" v-model="product.quantity" type="number" class="text-input" min="1" max="10000" step="1">
     </label>
   </div>
   <div class="tags">
