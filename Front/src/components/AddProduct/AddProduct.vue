@@ -22,8 +22,9 @@ export default {
     async createProduct() {
       if (this.validateProduct(this.product)) {
         try {
-          await createProduct(this.product)
+          const result = await createProduct(this.product)
           this.$notify(productAddSuccess)
+          this.$router.push({ name: 'products/id', params: { id: result._id } })
         } catch (err) {
           this.$notify(productAddError)
         }

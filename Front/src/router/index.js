@@ -51,6 +51,7 @@ export default new Router({
     },
     {
       path: '/products/:id',
+      name: 'products/id',
       component: ProductPage
     },
     {
