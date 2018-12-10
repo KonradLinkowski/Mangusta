@@ -11,12 +11,24 @@ const getters = {
 const mutations = {
   addToCart(state, product) {
     state.cart.push(product)
-  } 
+  },
+  removeFromCart(state, index) {
+      state.cart.splice(index, 1)
+    }
 }
 
 const actions = {
-  addToCart({ commit }, product) {
-    commit('addToCart', product)
+  addToCart({ commit, state }, product) {
+    const ind = state.cart.indexOf(product)
+    if (ind === -1) {
+      commit('addToCart', product)
+    }
+  },
+  removeFromCart({ commit }, product) {
+    const ind = state.cart.indexOf(product)
+    if (ind !== -1) {
+      commit('removeFromCart', ind)
+    }
   }
 }
 

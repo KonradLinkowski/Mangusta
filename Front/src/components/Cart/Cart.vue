@@ -10,6 +10,11 @@ export default {
     productList() {
       return this.$store.getters['cart/list']
     }
+  },
+  methods: {
+    removeFromCart(product) {
+      this.$store.dispatch('cart/removeFromCart', product)
+    }
   }
 }
 </script>

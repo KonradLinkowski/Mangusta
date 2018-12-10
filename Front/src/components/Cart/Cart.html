@@ -1,5 +1,8 @@
 <section id='ProductList'>
-    <Product v-for='product in productList' 
+  <div v-for='product in productList'>
+    <Product
     :key='product.id' 
     :product='product'></Product>
+    <button @click="removeFromCart(product)">Remove from cart</button>
+  </div>
 </section>
