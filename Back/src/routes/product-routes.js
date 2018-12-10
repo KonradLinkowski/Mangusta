@@ -40,11 +40,10 @@ router.route('/product').post(async(req, res) => {
     })
     try {
         await newProduct.save()
-        console.log(newProduct)
     } catch (err) {
-        return res.status(500).send('Internal server error')
+        return res.status(422).send('Wrong product structure.')
     }
-    return res.status(201).send('Product created')
+    return res.status(201).send(newProduct)
 })
 
 module.exports = router
