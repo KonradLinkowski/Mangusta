@@ -19,7 +19,11 @@ export default {
     }
   },
   methods: {
-    async createProduct() {
+    clear(e) {
+      e.target.classList.toggle('input-error', false)
+    },
+    async createProduct(e) {
+      e.preventDefault()
       if (this.validateProduct(this.product)) {
         try {
           const result = await createProduct(this.product)
@@ -33,17 +37,29 @@ export default {
       }
     },
     validateProduct(prod) {
-      if (Number.isNaN(Number(prod.price))) {
-        return false
-      }
-      if (!prod.price.toString().split('.')[1].lenght === 2) {
-        return false
-      }
-      if (!Number.isInteger(prod.quantity)) {
-        return false
-      }
-      if (prod.name.lenght !== 0) {
-        
+      const entries = Object.entries(this.$refs)
+      return entries.reduce((p, ref) =>{
+        if (!this.isValid(ref[0])) {
+          console.log(ref, 'is not valid')
+          ref[1].classList.toggle('input-error', true)
+          return false
+        }
+        return p && false
+      }, true)
+    },
+    isValid(prop) {
+      const prod = this.product
+      switch (prop) {
+        case 'price':
+        return !Number.isNaN(Number(prod.price)) && prod.price.toString().split('.')[1].length === 2
+        case 'quantity':
+        return Number.isInteger(prod.quantity)
+        case 'name':
+        return prod.name.length !== 0
+        case 'description':
+        return prod.description.length !== 0
+        case 'tags':
+        return prod.tags.length !== 0
       }
     }
   },
