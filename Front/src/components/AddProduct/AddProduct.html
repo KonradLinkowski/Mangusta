@@ -19,12 +19,12 @@
     </label>
     <input id="product-quantity" v-model="product.quantity" type="number" class="text-input" min="1" max="10000" step="1" ref="quantity">
   </div>
-  <div class="tags" ref="tags">
+  <div class="tags" ref="category">
     <div v-for="tag in tags" :key="tag">
       <label :for="'product-tag-' + tag" class="label checkbox-label">
         {{ tag }}
       </label>
-      <input :id="'product-tag-' + tag" v-model="product.tags" type="checkbox" :value="tag" class="checkbox">
+      <input :id="'product-tag-' + tag" v-model="product.category" type="checkbox" :value="tag" class="checkbox">
     </div>
   </div>
   <button class="button">Create</button>

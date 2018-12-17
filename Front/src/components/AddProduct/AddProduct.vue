@@ -9,7 +9,7 @@ export default {
   data() {
     return {
       product: {
-        tags: [],
+        category: [],
         name: '',
         description: '',
         price: 0.01,
@@ -44,7 +44,8 @@ export default {
           ref[1].classList.toggle('input-error', true)
           return false
         }
-        return p && false
+        ref[1].classList.toggle('input-error', false)
+        return p && true
       }, true)
     },
     isValid(prop) {
@@ -56,10 +57,12 @@ export default {
         return Number.isInteger(prod.quantity)
         case 'name':
         return prod.name.length !== 0
-        case 'description':
-        return prod.description.length !== 0
-        case 'tags':
-        return prod.tags.length !== 0
+        // case 'description':
+        // return prod.description.length !== 0
+        // case 'category':
+        // return prod.category.length !== 0
+        default:
+        return true
       }
     }
   },
