@@ -7,17 +7,23 @@ router.route('/product').get(async(req, res) => {
     const search = req.query.search || ''
     // każdy produkt ma mieć domyślnie TAG product
     //   dzięki temu można je wyszukiwa bez podania tagu
-    const tags = (await Tags.find()).map(tag => tag.name)
-    const category = req.query.category || [...tags]
+    const category = req.query.category || null
     const priceMin = req.query.priceMin || 0
     const priceMax = req.query.priceMax || Number.MAX_SAFE_INTEGER
     const dir = req.query.dir || 1
-
-    res.json(await Product.find({
-        name: { '$regex': search, '$options': 'i' },
-        price: { '$gte': priceMin, '$lte': priceMax },
-        category: { '$in': category }
-    }).sort({ price: dir }))
+    
+    if (category) {
+        res.json(await Product.find({
+            name: { '$regex': search, '$options': 'i' },
+            price: { '$gte': priceMin, '$lte': priceMax },
+            category: { '$in': category }
+        }).sort({ price: dir }))
+    } else {
+        res.json(await Product.find({
+            name: { '$regex': search, '$options': 'i' },
+            price: { '$gte': priceMin, '$lte': priceMax },
+        }).sort({ price: dir }))
+    }
 })
 
 router.route('/product/:id').get(async(req, res) => {
