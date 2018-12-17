@@ -5,6 +5,14 @@ const state = {
 const getters = {
   list: state => {
     return state.cart
+  },
+  productsCost: (state) => {
+    var sum = 0
+    for (var i = 0; i < state.cart.length; i++)
+    {
+      sum += state.cart[i].price
+    }
+    return sum
   }
 }
 

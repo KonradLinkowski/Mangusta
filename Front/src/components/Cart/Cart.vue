@@ -9,6 +9,9 @@ export default {
   computed: {
     productList() {
       return this.$store.getters['cart/list']
+    },
+    productsCost() {
+      return this.$store.getters['cart/productsCost']
     }
   },
   methods: {
