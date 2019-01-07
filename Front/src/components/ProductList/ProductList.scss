@@ -10,6 +10,12 @@
     border: 0px;
   }
 
+  button {
+    padding: 0.5em 1em;
+    border-radius: 8%;
+    cursor: pointer;
+  }
+
   #search-term {
     width: 30%;
   }
@@ -17,10 +23,4 @@
   .search_price_envoirement {
     margin: 1em 0;
   }
-}
-
-button {
-  padding: 0.5em 1em;
-  border-radius: 8%;
-  cursor: pointer;
 }
