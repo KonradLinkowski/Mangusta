@@ -5,7 +5,9 @@
   input {
     height: 1.8em;
     margin: 0 1em;
-    padding: 0.2em;
+    padding: 0.2em 0.5em;
+    border-radius: 3%;
+    border: 0px;
   }
 
   #search-term {
@@ -18,11 +20,7 @@
 }
 
 button {
-  background-color: #eee;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
+  padding: 0.5em 1em;
+  border-radius: 8%;
   cursor: pointer;
-  cursor: hand;
-  font-family: Arial;
 }
