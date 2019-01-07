@@ -11,20 +11,7 @@ export default {
     Product
   },
   data() {
-    return {
-      productList: [{
-        "userId": 1,
-        "id": 1,
-        "name": "Spawarka kątowa",
-        "price": 10.00
-      },
-      {
-        "userId": 1,
-        "id": 2,
-        "name": "Szczoteczka do zembuf",
-        "price": 5.00
-      }]
-    }
+    return {}
   }
 }
 </script>

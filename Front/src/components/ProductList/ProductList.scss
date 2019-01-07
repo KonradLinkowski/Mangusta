@@ -1,15 +1,20 @@
 #ProductList {
   width: 100%;
-}
+  font-size: 1em;
 
-#search-term {
-  width: 200px;
-  height: 20px;
-}
+  input {
+    height: 1.8em;
+    margin: 0 1em;
+    padding: 0.2em;
+  }
 
-.price-option {
-  width: 40px;
-  height: 20px;
+  #search-term {
+    width: 30%;
+  }
+
+  .search_price_envoirement {
+    margin: 1em 0;
+  }
 }
 
 button {
