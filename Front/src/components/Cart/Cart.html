@@ -1,8 +1,11 @@
 <section id='ProductList'>
   <div v-for='product in productList'>
     <Product
-    :key='product.id' 
+    :key='product.id'
     :product='product'></Product>
     <button @click="removeFromCart(product)">Remove from cart</button>
+  </div>
+  <div>
+    Całkowity koszt zakupów: {{ productsCost }}
   </div>
 </section>

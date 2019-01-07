@@ -26,6 +26,7 @@ const getters = {
   productList: (state) => {
     return state.productList
   }
+  
 }
 
 // actions
@@ -37,7 +38,7 @@ const actions = {
     })
     .catch(err => {
       commit(err)
-    })  
+    })
   }
 }
 
