@@ -54,9 +54,9 @@ export default {
         case 'price':
         return !Number.isNaN(Number(prod.price)) && prod.price.toString().split('.')[1].length === 2
         case 'quantity':
-        return Number.isInteger(prod.quantity)
+        return Number.isInteger(Number(prod.quantity))
         case 'name':
-        return prod.name.length !== 0
+        return prod.name.match(/^[^\s]+(\s+[^\s]+)*$/)
         // case 'description':
         // return prod.description.length !== 0
         // case 'category':
