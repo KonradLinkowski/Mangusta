@@ -27,7 +27,7 @@ export default {
         searchTerm = "",
         priceMin = "",
         priceMax = "",
-        category = ["product"]) {
+        category = []) {
       fetch(
         `http://localhost:3000/product/?search=${searchTerm}&priceMin=${priceMin}&priceMax=${priceMax}&category=${category}`, {
         method: 'GET',
