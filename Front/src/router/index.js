@@ -10,10 +10,12 @@ import ProductList from '../components/ProductList/ProductList'
 import AddProduct from '../components/AddProduct/AddProduct'
 import ProductPage from '../components/ProductPage/ProductPage'
 import NotFound from '../components/NotFound/NotFound'
+import ForgotPassword from '../components/ForgotPassword/ForgotPassword'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -29,6 +31,11 @@ export default new Router({
       path: '/register',
       name: 'register',
       component: Register
+    },
+    {
+      path: '/forgot-password',
+      name: 'forgot-password',
+      component: ForgotPassword
     },
     {
       path: '/settings',
