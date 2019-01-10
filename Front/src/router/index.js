@@ -14,61 +14,31 @@ import ForgotPassword from '../components/ForgotPassword/ForgotPassword'
 
 Vue.use(Router)
 
-export default new Router({
+export const router = new Router({
   mode: 'history',
   routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: Login
-    },
-    {
-      path: '/register',
-      name: 'register',
-      component: Register
-    },
-    {
-      path: '/forgot-password',
-      name: 'forgot-password',
-      component: ForgotPassword
-    },
-    {
-      path: '/settings',
-      name: 'settings',
-      component: Settings
-    },
-    {
-      path: '/cart',
-      name: 'cart',
-      component: Cart
-    },
-    {
-      path: '/products',
-      name: 'products',
-      component: ProductList
-    },
-    {
-      path: '/addproduct',
-      component: AddProduct
-    },
-    {
-      path: '/products/:id',
-      name: 'products/id',
-      component: ProductPage
-    },
-    {
-      path: '/404',
-      name: '404',
-      component: NotFound
-    },
-    {
-      path: '*',
-      redirect: '404',
-    }
+    { path: '/', component: Home },
+    { path: '/login', component: Login },
+    { path: '/register', component: Register },
+    { path: '/forgot-password', component: ForgotPassword },
+    { path: '/settings', component: Settings },
+    { path: '/cart', component: Cart },
+    { path: '/products', component: ProductList },
+    { path: '/addproduct', component: AddProduct },
+    { path: '/products/:id', component: ProductPage },
+    { path: '/404', component: NotFound },
+    { path: '*', redirect: '/404', }
   ]
 })
+
+// router.beforeEach((to, next) => {
+//   const publicPages = ['/login', '/register'];
+//   const authRequired = !publicPages.includes(to.path);
+//   const loggedIn = localStorage.getItem('user');
+
+//   if (authRequired && !loggedIn) {
+//     return next('/login');
+//   }
+
+//   next();
+// })

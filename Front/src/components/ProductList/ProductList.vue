@@ -15,32 +15,30 @@ export default {
       priceMax: ""
     }
   },
-  created: function () {
-    this.searchFromDB(this.searchTerm)
-  },methods: {
+  created: function () { this.getProductList(this.searchTerm) },
+  methods: {
     search: function (event) {
-      // `event` is the native DOM event
-      if (event) {
-        this.searchFromDB(this.searchTerm, this.priceMin, this.priceMax)
+      event && this.getProductList(this.searchTerm, this.priceMin, this.priceMax)
+    },
+    getProductList: function (searchTerm = "", priceMin = "", priceMax = "", category = []) {
+      let query = ''
+      if (searchTerm || priceMin || priceMax || category.length) {
+        searchTerm && (query += `search=${searchTerm}&`)
+        priceMin && (query += `priceMin=${priceMin}&`)
+        priceMax && (query += `priceMax=${priceMax}&`)
+        category && (query += `category=${category}&`)
+        query = query.substring(0, query.length - 1)
       }
-    }, searchFromDB: function(
-        searchTerm = "",
-        priceMin = "",
-        priceMax = "",
-        category = []) {
-      fetch(
-        `http://localhost:3000/product/?search=${searchTerm}&priceMin=${priceMin}&priceMax=${priceMax}&category=${category}`, {
+      fetch(`http://localhost:3000/product/${query}`, {
         method: 'GET',
-        headers: {
-          'Access-Control-Allow-Origin': 'http://localhost:3000/'
-        }
+        headers: { 'Access-Control-Allow-Origin': 'http://localhost:3000/' }
       })
-        .then(response => response.json())
-        .then(json => {
-          this.productList = json
-          console.log(this.productList)
-        })
-        .catch(err => console.log(err))
+      .then(response => response.json())
+      .then(json => {
+        this.productList = json
+        console.log('Product list:\n', this.productList)
+      })
+      .catch(error => console.log(error))
     }
   }
 }
