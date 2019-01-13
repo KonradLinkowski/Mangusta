@@ -4,7 +4,8 @@
 </style>
 <script>
 import Product from '../Product/Product'
-import { getProductList } from './module/productlist'
+import { getProductList } from '@/services/ProductService'
+import { productUpdateError, serverError } from '@/assets/notifications'
 export default {
   components: { Product },
   data: function() {
@@ -20,8 +21,13 @@ export default {
     this.search()
   },
   methods: {
-    search: function(event) {
-        this.productList = getProductList(this.searchTerm, this.priceMin, this.priceMax, this.category)
+    search: async function (event) {
+        try {
+          this.productList = await getProductList(this.searchTerm, this.priceMin, this.priceMax, this.category)
+        } catch (error) {
+          console.log(error)
+          this.productList = []
+        }
       }
   }
 }

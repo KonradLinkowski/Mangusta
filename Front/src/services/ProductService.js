@@ -1,150 +1,80 @@
 import axios from 'axios'
 import {
   productAddSuccess,
-  productAddError,
+  // productAddError,
   productUpdateSuccess,
-  productUpdateError,
+  // productUpdateError,
   productDeleteSuccess,
-  productDeleteError,
+  // productDeleteError,
   serverError
-} from '../assets/notifications'
+} from '@/assets/notifications'
+import { origin, protocol } from '@/assets/dictionary'
 
-import { origin, protocol } from '../assets/dictionary'
 
-export const GET_PRODUCT_LIST = 'GET_PRODUCT_LIST'
-export const GET_PRODUCT = 'GET_PRODUCT'
-export const UPDATE_PRODUCT_LIST = 'UPDATE_PRODUCT_LIST'
-
-const getProductListAction = (data = undefined) => {
-  return {
-    type: GET_PRODUCT_LIST,
-    data: data
+// because of console logs
+/*eslint-disable*/
+export const getProductList = async (searchTerm = "", priceMin = "", priceMax = "", category = []) => {
+  let query = ''
+  if (searchTerm || priceMin || priceMax || category.length) {
+    query += '?'
+    searchTerm && (query += `search=${searchTerm}&`)
+    priceMin && (query += `priceMin=${priceMin}&`)
+    priceMax && (query += `priceMax=${priceMax}&`)
+    category.length && (query += `category=${category}&`)
+    query = query.substring(0, query.length - 1)
+  }
+  try {
+    let response = await axios.get(`${protocol}://${origin}/product/${query}`)
+    return response.data
+  }
+  catch (error) {
+    console.log(error)
+    this.$notify(serverError)
+    return []
   }
 }
 
-const getProductAction = (data = undefined) => {
-  return {
-    type: GET_PRODUCT,
-    data: data
+export const getProduct = async (uuid) => {
+  try {
+    let response = await axios.get(`${protocol}://${origin}/product/${uuid}`)
+    return response.data
+  }
+  catch (error) {
+    console.log(error)
+    this.$notify(serverError)
+    return {}
   }
 }
 
-const updateProductListAction = () => {
-  return {
-    type: UPDATE_PRODUCT_LIST
+export const addProduct = async (data) => {
+  try {
+    await axios.post(`${protocol}://${origin}/product/`, data)
+    this.$notify(productAddSuccess) }
+  catch (error) {
+    console.log(error)
+    // this.$notify(productAddError)
   }
 }
 
-export const getProductList = (type) => {
-  return(dispatch) => {
-    return new Promise(resolve => {
-      axios.get(`${protocol}://${origin}/product/products&filter=type:${type}`)
-      .then(response => {
-        dispatch(getProductListAction(response.data))
-        resolve()
-      })
-      .catch(error => {
-        this.$notify(serverError)
-        resolve(error)
-      })
-    })
+export const updateProduct = async (uuid, data) => {
+  try {
+    await axios.put(`${protocol}://${origin}/product/${uuid}`, data)
+    this.$notify(productUpdateSuccess)
+  }
+  catch (error) {
+    console.log(error)
+    // this.$notify(productUpdateError)
   }
 }
 
-export const getProduct = (type, uuid) => {
-  return(dispatch) => {
-    return new Promise(resolve => {
-      axios.get(`${protocol}://${origin}/product/products/${uuid}&filter=type:${type}`)
-      .then(response => {
-        dispatch(getProductAction(response.data))
-        resolve()
-      })
-      .catch(error => {
-        this.$notify(serverError)
-        resolve(error)
-      })
-    })
+export const deleteProduct = async (uuid) => {
+  try {
+    await axios.delete(`${protocol}://${origin}/product/${uuid}`)
+    this.$notify(productDeleteSuccess)
+  }
+  catch (error) {
+    console.log(error)
+    // this.$notify(productDeleteError)
   }
 }
-
-export const addProduct = (data) => {
-  return(dispatch) => {
-    return new Promise(resolve => {
-      axios.get(`${protocol}://${origin}/product/products`, data)
-      .then(response => {
-        dispatch(updateProductListAction())
-        this.$notify(productAddSuccess)
-        resolve(response)
-      })
-      .catch(error => {
-        this.$notify(productAddError)
-        resolve(error)
-      })
-    })
-  }
-}
-
-export const updateProduct = (uuid, data) => {
-  return(dispatch) => {
-    return new Promise(resolve => {
-      axios.get(`${protocol}://${origin}/product/products/${uuid}`, data)
-      .then(response => {
-        dispatch(updateProductListAction())
-        this.$notify(productUpdateSuccess)
-        resolve(response)
-      })
-      .catch(error => {
-        this.$notify(productUpdateError)
-        resolve(error)
-      })
-    })
-  }
-}
-
-export const deleteProduct = (uuid) => {
-  return(dispatch) => {
-    return new Promise(resolve => {
-      axios.get(`${protocol}://${origin}/product/products/${uuid}`)
-      .then(response => {
-        dispatch(updateProductListAction())
-        this.$notify(productDeleteSuccess)
-        resolve(response)
-      })
-      .catch(error => {
-        this.$notify(productDeleteError)
-        resolve(error)
-      })
-    })
-  }
-}
-
-const ACTION_HANDLERS = {
-  [GET_PRODUCT_LIST]: (state, action) => {
-    return {
-      ...state,
-      productList: action.data
-    }
-  },
-  [GET_PRODUCT]: (state, action) => {
-    return {
-      ...state,
-      product: action.data
-    }
-  },
-  [UPDATE_PRODUCT_LIST]: (state) => {
-    return {
-      ...state,
-      updateProductList: new Date()
-    }
-  }
-}
-
-const initialState = {
-  productList: {},
-  product: {}
-}
-
-export default function ProductService (state = initialState, action) {
-  const handler = ACTION_HANDLERS[action.type]
-  return handler ? handler(state, action) : state
-}
+/*eslint-enable*/

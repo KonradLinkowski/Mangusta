@@ -4,7 +4,13 @@
 </style>
 <script>
 import { productAddSuccess, productAddError, serverError } from '@/assets/notifications'
-import { getTags, createProduct } from '@/services/api'
+import { getTags,
+  createProduct
+} from '@/services/api'
+import { addProduct } from '@/services/ProductService'
+
+
+
 export default {
   data() {
     return {
@@ -26,9 +32,9 @@ export default {
       e.preventDefault()
       if (this.validateProduct(this.product)) {
         try {
-          const result = await createProduct(this.product)
+          const result = await addProduct(this.product)
           this.$notify(productAddSuccess)
-          this.$router.push({ name: 'products/id', params: { id: result._id } })
+          // this.$router.push({ name: 'products/id', params: { id: result._id } })
         } catch (err) {
           this.$notify(productAddError)
         }
