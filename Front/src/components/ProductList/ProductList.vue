@@ -4,9 +4,10 @@
 </style>
 <script>
 import Product from '../Product/Product'
+import { getProductList } from './module/productlist'
 export default {
   components: { Product },
-  data() {
+  data: function() {
     return {
       productList: [],
       searchTerm: "",
@@ -15,31 +16,13 @@ export default {
       priceMax: ""
     }
   },
-  created: function () { this.getProductList(this.searchTerm) },
+  created: function() {
+    this.search()
+  },
   methods: {
-    search: function (event) {
-      event && this.getProductList(this.searchTerm, this.priceMin, this.priceMax)
-    },
-    getProductList: function (searchTerm = "", priceMin = "", priceMax = "", category = []) {
-      let query = ''
-      if (searchTerm || priceMin || priceMax || category.length) {
-        searchTerm && (query += `search=${searchTerm}&`)
-        priceMin && (query += `priceMin=${priceMin}&`)
-        priceMax && (query += `priceMax=${priceMax}&`)
-        category && (query += `category=${category}&`)
-        query = query.substring(0, query.length - 1)
+    search: function(event) {
+        this.productList = getProductList(this.searchTerm, this.priceMin, this.priceMax, this.category)
       }
-      fetch(`http://localhost:3000/product/${query}`, {
-        method: 'GET',
-        headers: { 'Access-Control-Allow-Origin': 'http://localhost:3000/' }
-      })
-      .then(response => response.json())
-      .then(json => {
-        this.productList = json
-        console.log('Product list:\n', this.productList)
-      })
-      .catch(error => console.log(error))
-    }
   }
 }
 </script>
