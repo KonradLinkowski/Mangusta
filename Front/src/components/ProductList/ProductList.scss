@@ -1,23 +1,26 @@
 #ProductList {
   width: 100%;
-}
+  font-size: 1em;
 
-#search-term {
-  width: 200px;
-  height: 20px;
-}
+  input {
+    height: 1.8em;
+    margin: 0 1em;
+    padding: 0.2em 0.5em;
+    border-radius: 3%;
+    border: 0px;
+  }
 
-.price-option {
-  width: 40px;
-  height: 20px;
-}
+  button {
+    padding: 0.5em 1em;
+    border-radius: 8%;
+    cursor: pointer;
+  }
 
-button {
-  background-color: #eee;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  cursor: hand;
-  font-family: Arial;
+  #search-term {
+    width: 30%;
+  }
+
+  .search_price_envoirement {
+    margin: 1em 0;
+  }
 }

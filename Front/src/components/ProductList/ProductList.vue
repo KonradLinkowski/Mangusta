@@ -4,9 +4,11 @@
 </style>
 <script>
 import Product from '../Product/Product'
+import { getProductList } from '@/services/ProductService'
+import { productUpdateError, serverError } from '@/assets/notifications'
 export default {
   components: { Product },
-  data() {
+  data: function() {
     return {
       productList: [],
       searchTerm: "",
@@ -15,33 +17,18 @@ export default {
       priceMax: ""
     }
   },
-  created: function () {
-    this.searchFromDB(this.searchTerm)
-  },methods: {
-    search: function (event) {
-      // `event` is the native DOM event
-      if (event) {
-        this.searchFromDB(this.searchTerm, this.priceMin, this.priceMax)
-      }
-    }, searchFromDB: function(
-        searchTerm = "",
-        priceMin = "",
-        priceMax = "",
-        category = ["product"]) {
-      fetch(
-        `http://localhost:3000/product/?search=${searchTerm}&priceMin=${priceMin}&priceMax=${priceMax}&category=${category}`, {
-        method: 'GET',
-        headers: {
-          'Access-Control-Allow-Origin': 'http://localhost:3000/'
+  created: function() {
+    this.search()
+  },
+  methods: {
+    search: async function (event) {
+        try {
+          this.productList = await getProductList(this.searchTerm, this.priceMin, this.priceMax, this.category)
+        } catch (error) {
+          console.log(error)
+          this.productList = []
         }
-      })
-        .then(response => response.json())
-        .then(json => {
-          this.productList = json
-          console.log(this.productList)
-        })
-        .catch(err => console.log(err))
-    }
+      }
   }
 }
 </script>

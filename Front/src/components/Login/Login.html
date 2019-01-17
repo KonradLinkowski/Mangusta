@@ -4,12 +4,12 @@
         <h1>Welcome to Mongoose shop!</h1>
         <h3 class=''>Name</h3>
         <input type='text' id='name' placeholder='Type name or email...'/><br>
-        <h3 class=''>Email</h3>
+        <h3 class=''>Password</h3>
         <input type='password' id='password' placeholder='Type password...'/><br>
         <button type="submit">Sign in</button>
         <p>Remember password?  <input type='checkbox' id='isRemembered' /></p><br>
-        <span class='float-left'><a href='#/register/'>Don't have an account?</a></span>
-        <span class='float-right'><a href='#/forgotPassword/'>Forgot password</a></span>
+        <span class='float-left'><router-link to='register'>Don't have an account?</router-link></span>
+        <span class='float-right'><router-link to='forgot-password'>Forgot password</router-link></span>
       </form>
     </div>
   </section>
