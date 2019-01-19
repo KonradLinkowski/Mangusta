@@ -4,9 +4,7 @@
 </style>
 <script>
 import { productAddSuccess, productAddError, serverError } from '@/assets/notifications'
-import { getTags,
-  createProduct
-} from '@/services/api'
+import { getTagList } from '@/services/TagService'
 import { addProduct } from '@/services/ProductService'
 
 
@@ -70,16 +68,13 @@ export default {
         default:
         return true
       }
+    },
+    async getTags () {
+      try { this.tags = await getTagList() } catch (error) { console.log(error) }
     }
   },
   mounted() {
-    getTags()
-    .then(tags => {
-      this.tags = tags
-    })
-    .catch(err => {
-      this.$notify(serverError)
-    })
+    this.getTags()
   }
 }
 </script>

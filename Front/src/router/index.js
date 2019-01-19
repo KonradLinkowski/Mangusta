@@ -32,7 +32,7 @@ export const router = new Router({
 })
 
 // router.beforeEach((to, next) => {
-//   const publicPages = ['/login', '/register'];
+//   const publicPages = ['/login', '/register', '/404'];
 //   const authRequired = !publicPages.includes(to.path);
 //   const loggedIn = localStorage.getItem('user');
 

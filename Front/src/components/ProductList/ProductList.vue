@@ -21,7 +21,7 @@ export default {
     this.search()
   },
   methods: {
-    search: async function (event) {
+    async search (event) {
         try {
           this.productList = await getProductList(this.searchTerm, this.priceMin, this.priceMax, this.category)
         } catch (error) {
