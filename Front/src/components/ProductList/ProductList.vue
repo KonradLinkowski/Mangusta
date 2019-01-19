@@ -26,7 +26,6 @@ export default {
           this.productList = await getProductList(this.searchTerm, this.priceMin, this.priceMax, this.category)
         } catch (error) {
           console.log(error)
-          this.productList = []
         }
       }
   }
