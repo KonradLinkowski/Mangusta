@@ -7,8 +7,6 @@ import { productAddSuccess, productAddError, serverError } from '@/assets/notifi
 import { getTagList } from '@/services/TagService'
 import { addProduct } from '@/services/ProductService'
 
-
-
 export default {
   data() {
     return {
@@ -52,21 +50,16 @@ export default {
         return p && true
       }, true)
     },
-    isValid(prop) {
-      const prod = this.product
+    isValid (prop) {
       switch (prop) {
         case 'price':
-        return !Number.isNaN(Number(prod.price)) && prod.price.toString().split('.')[1].length === 2
+          return !Number.isNaN(Number(this.product.price)) && this.product.price.toString().split('.')[1].length === 2
         case 'quantity':
-        return Number.isInteger(Number(prod.quantity))
+          return Number.isInteger(Number(this.product.quantity))
         case 'name':
-        return prod.name.match(/^[^\s]+(\s+[^\s]+)*$/)
-        // case 'description':
-        // return prod.description.length !== 0
-        // case 'category':
-        // return prod.category.length !== 0
+          return this.product.name.match(/^[^\s]+(\s+[^\s]+)*$/)
         default:
-        return true
+          return true
       }
     },
     async getTags () {

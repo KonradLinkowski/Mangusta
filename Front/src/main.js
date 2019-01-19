@@ -7,7 +7,7 @@ import { router } from './router'
 import store from './store'
 import { getProductList, getProduct, addProduct, updateProduct, deleteProduct } from '@/services/ProductService'
 import { getTagList, getTag, addTag, updateTag, deleteTag } from '@/services/TagService'
-import { getUser, addUser, updateUser, deleteUser } from '@/services/UserServive'
+import { getUser, addUser, updateUser, deleteUser } from '@/services/UserService'
 
 Vue.use(Vuex)
 Vue.use(Notifications)
