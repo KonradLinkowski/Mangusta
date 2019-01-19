@@ -1,13 +1,13 @@
 import axios from 'axios'
-// import {
-//   productAddSuccess,
-//   // productAddError,
-//   productUpdateSuccess,
-//   // productUpdateError,
-//   productDeleteSuccess,
-//   // productDeleteError,
-//   serverError
-// } from '@/assets/notifications'
+import {
+  productAddSuccess,
+  productAddError,
+  productUpdateSuccess,
+  productUpdateError,
+  productDeleteSuccess,
+  productDeleteError,
+  serverError
+} from '@/assets/notifications'
 import { origin, protocol } from '@/assets/dictionary'
 
 
@@ -41,7 +41,7 @@ export const getProduct = async (uuid) => {
   }
   catch (error) {
     console.log(error)
-    // this.$notify(serverError)
+    this.$notify(serverError)
     return {}
   }
 }
