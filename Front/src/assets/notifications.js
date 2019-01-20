@@ -55,3 +55,35 @@ export const productDeleteError = {
   text: notification_system_labels.text.product_delete_error,
   duration: 30000
 }
+
+export const logInSuccess = {
+  group: 'login',
+  type: 'success',
+  title: notification_system_labels.title.login_success,
+  text: notification_system_labels.text.login_success,
+  duration: 30000
+}
+
+export const logInError = {
+  group: 'login',
+  type: 'error',
+  title: notification_system_labels.title.login_error,
+  text: notification_system_labels.text.login_error,
+  duration: 30000
+}
+
+export const logOutSuccess = {
+  group: 'logout',
+  type: 'success',
+  title: notification_system_labels.title.logout_success,
+  text: notification_system_labels.text.logout_success,
+  duration: 30000
+}
+
+export const logOutError = {
+  group: 'logout',
+  type: 'error',
+  title: notification_system_labels.title.logout_error,
+  text: notification_system_labels.text.logout_error,
+  duration: 30000
+}
