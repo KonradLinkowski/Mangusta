@@ -3,7 +3,7 @@
   @import './AddProduct.scss'
 </style>
 <script>
-import { productAddSuccess, productAddError, serverError } from '@/assets/notifications'
+import { productAddSuccess, productAddError } from '@/assets/notifications'
 import { getTagList } from '@/services/TagService'
 import { addProduct } from '@/services/ProductService'
 
@@ -30,7 +30,7 @@ export default {
         try {
           const result = await addProduct(this.product)
           this.$notify(productAddSuccess)
-          // this.$router.push({ name: 'products/id', params: { id: result._id } })
+          this.$router.push({ name: 'products/id', params: { id: result._id } })
         } catch (err) {
           this.$notify(productAddError)
         }
@@ -38,10 +38,11 @@ export default {
         this.$notify(productAddError)
       }
     },
-    validateProduct(prod) {
+    validateProduct () {
       const entries = Object.entries(this.$refs)
       return entries.reduce((p, ref) =>{
         if (!this.isValid(ref[0])) {
+          // eslint-disable-next-line
           console.log(ref, 'is not valid')
           ref[1].classList.toggle('input-error', true)
           return false
@@ -63,6 +64,7 @@ export default {
       }
     },
     async getTags () {
+      // eslint-disable-next-line
       try { this.tags = await getTagList() } catch (error) { console.log(error) }
     }
   },
