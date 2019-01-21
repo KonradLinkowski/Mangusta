@@ -13,17 +13,17 @@ import { origin, protocol } from '@/assets/dictionary'
 
 // because of console logs
 /*eslint-disable*/
-export const getProductList = async (searchTerm = "", priceMin = "", priceMax = "", category = [], userId ='') => {
+export const getProductList = async (searchTerm = '', priceMin = '', priceMax = '', category = [], userId ='') => {
   let query = ''
-  if (searchTerm || priceMin || priceMax || category.length || userId) {
+  if (searchTerm || priceMin || priceMax || category.length) {
     query += '?'
     searchTerm && (query += `search=${searchTerm}&`)
     priceMin && (query += `priceMin=${priceMin}&`)
     priceMax && (query += `priceMax=${priceMax}&`)
     category.length && (query += `category=${category}&`)
-    userId && (query += `user.id=${userId}&`)
     query = query.substring(0, query.length - 1)
   }
+  userId && (origin += `/user/${userId}`)
   try {
     let response = await axios.get(`${protocol}://${origin}/product/${query}`)
     return response.data

@@ -9,6 +9,8 @@ import Cart from '../components/Cart/Cart'
 import ProductList from '../components/ProductList/ProductList'
 import AddProduct from '../components/AddProduct/AddProduct'
 import ProductPage from '../components/ProductPage/ProductPage'
+import UserProductList from '../components/UserProductList/UserProductList'
+import UserProduct from '../components/UserProduct/UserProduct'
 import NotFound from '../components/NotFound/NotFound'
 import ForgotPassword from '../components/ForgotPassword/ForgotPassword'
 
@@ -26,6 +28,8 @@ export const router = new Router({
     { path: '/products', component: ProductList },
     { path: '/addproduct', component: AddProduct },
     { path: '/products/:id', component: ProductPage },
+    { path: '/user/:user_id/product', component: UserProductList },
+    { path: '/user/:user_id/product/:product_id', component: UserProduct },
     { path: '/404', component: NotFound },
     { path: '*', redirect: '/404', }
   ]
