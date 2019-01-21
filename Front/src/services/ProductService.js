@@ -1,13 +1,13 @@
 import axios from 'axios'
-import {
-  productAddSuccess,
-  productAddError,
-  productUpdateSuccess,
-  productUpdateError,
-  productDeleteSuccess,
-  productDeleteError,
-  serverError
-} from '@/assets/notifications'
+// import {
+//   productAddSuccess,
+//   productAddError,
+//   productUpdateSuccess,
+//   productUpdateError,
+//   productDeleteSuccess,
+//   productDeleteError,
+//   serverError
+// } from '@/assets/notifications'
 import { origin, protocol } from '@/assets/dictionary'
 
 
@@ -41,7 +41,7 @@ export const getProduct = async (uuid) => {
   }
   catch (error) {
     console.log(error)
-    this.$notify(serverError)
+    // this.$notify(serverError)
     return {}
   }
 }
@@ -49,36 +49,36 @@ export const getProduct = async (uuid) => {
 export const addProduct = async (data) => {
   try {
     let response = await axios.post(`${protocol}://${origin}/product/`, data)
-    this.$notify(productAddSuccess)
+    // this.$notify(productAddSuccess)
     return response.data
   }
   catch (error) {
     console.log(error)
-    this.$notify(productAddError)
+    // this.$notify(productAddError)
   }
 }
 
 export const updateProduct = async (uuid, data) => {
   try {
     let response = await axios.put(`${protocol}://${origin}/product/${uuid}`, data)
-    this.$notify(productUpdateSuccess)
+    // this.$notify(productUpdateSuccess)
     return response.data
   }
   catch (error) {
     console.log(error)
-    this.$notify(productUpdateError)
+    // this.$notify(productUpdateError)
   }
 }
 
 export const deleteProduct = async (uuid) => {
   try {
     let response = await axios.delete(`${protocol}://${origin}/product/${uuid}`)
-    this.$notify(productDeleteSuccess)
+    // this.$notify(productDeleteSuccess)
     return response.data
   }
   catch (error) {
     console.log(error)
-    this.$notify(productDeleteError)
+    // this.$notify(productDeleteError)
   }
 }
 /*eslint-enable*/

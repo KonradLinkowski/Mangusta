@@ -5,7 +5,7 @@ export const serverError = {
   type: 'warn',
   title: notification_system_labels.title.server_error,
   text: notification_system_labels.text.server_error,
-  duration: 30000
+  duration: 3000
 }
 
 export const productAddSuccess = {
@@ -13,7 +13,7 @@ export const productAddSuccess = {
     type: 'success',
     title: notification_system_labels.title.product_add_success,
     text: notification_system_labels.text.product_add_success,
-    duration: 30000
+    duration: 3000
 }
 
 export const productAddError = {
@@ -21,7 +21,7 @@ export const productAddError = {
   type: 'error',
   title: notification_system_labels.title.product_add_error,
   text: notification_system_labels.text.product_add_error,
-  duration: 30000
+  duration: 3000
 }
 
 export const productUpdateSuccess = {
@@ -29,7 +29,7 @@ export const productUpdateSuccess = {
   type: 'success',
   title: notification_system_labels.title.product_update_success,
   text: notification_system_labels.text.product_update_success,
-  duration: 30000
+  duration: 3000
 }
 
 export const productUpdateError = {
@@ -37,7 +37,7 @@ export const productUpdateError = {
   type: 'error',
   title: notification_system_labels.title.product_update_error,
   text: notification_system_labels.text.product_update_error,
-  duration: 30000
+  duration: 3000
 }
 
 export const productDeleteSuccess = {
@@ -45,7 +45,7 @@ export const productDeleteSuccess = {
   type: 'success',
   title: notification_system_labels.title.product_delete_success,
   text: notification_system_labels.text.product_delete_success,
-  duration: 30000
+  duration: 3000
 }
 
 export const productDeleteError = {
@@ -53,7 +53,7 @@ export const productDeleteError = {
   type: 'error',
   title: notification_system_labels.title.product_delete_error,
   text: notification_system_labels.text.product_delete_error,
-  duration: 30000
+  duration: 3000
 }
 
 export const logInSuccess = {
@@ -61,7 +61,7 @@ export const logInSuccess = {
   type: 'success',
   title: notification_system_labels.title.login_success,
   text: notification_system_labels.text.login_success,
-  duration: 30000
+  duration: 3000
 }
 
 export const logInError = {
@@ -69,7 +69,7 @@ export const logInError = {
   type: 'error',
   title: notification_system_labels.title.login_error,
   text: notification_system_labels.text.login_error,
-  duration: 30000
+  duration: 3000
 }
 
 export const logOutSuccess = {
@@ -77,7 +77,7 @@ export const logOutSuccess = {
   type: 'success',
   title: notification_system_labels.title.logout_success,
   text: notification_system_labels.text.logout_success,
-  duration: 30000
+  duration: 3000
 }
 
 export const logOutError = {
@@ -85,5 +85,5 @@ export const logOutError = {
   type: 'error',
   title: notification_system_labels.title.logout_error,
   text: notification_system_labels.text.logout_error,
-  duration: 30000
+  duration: 3000
 }

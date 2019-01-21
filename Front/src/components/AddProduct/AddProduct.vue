@@ -29,8 +29,10 @@ export default {
       if (this.validateProduct(this.product)) {
         try {
           const result = await addProduct(this.product)
+          // eslint-disable-next-line
+          console.log(result)
           this.$notify(productAddSuccess)
-          this.$router.push({ name: 'products/id', params: { id: result._id } })
+          // this.$router.push({ name: `products/${result._id}` })
         } catch (err) {
           this.$notify(productAddError)
         }
