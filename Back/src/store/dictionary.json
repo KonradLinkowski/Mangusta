@@ -1,0 +1,11 @@
+{
+  "error_list": {
+    "default": "Something went wrong!",
+    "email_taken": "Email already taken",
+    "email_not_found": "Email not found",
+    "invalid_password": "Invalid password"
+  },
+  "success_list": {
+    "default": "Ok! :D"
+  }
+}
