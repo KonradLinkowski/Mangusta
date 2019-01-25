@@ -29,6 +29,14 @@ const ProductSchema = new mongoose.Schema({
       message: props => `${props.value} is not a valid quantity!`
     }
   },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    validate: {
+      validator: mongoose.Types.ObjectId.isValid,
+      message: props => `${props.value} is not a valid user id!`
+    }
+  },
   category: [String],
   isDeleted: { type: Boolean, default: false }
 })
