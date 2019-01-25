@@ -20,7 +20,7 @@ router.route('/users/register').post((request, response) => {
         } else {
           response.status(201).send(dictionary.success_list.default)
           response.json({
-            "token": savedUser.generateToken(),
+            "x-auth-token": savedUser.generateToken(),
             "user": savedUser
           })
         }
@@ -47,7 +47,7 @@ router.route('/users/login').post((req, res) => {
         } else if (isMatched) {
           res.status(200)
           res.json({
-              "token": user.generateToken(user)
+              "x-auth-token": user.generateToken(user)
           })
         } else {
          res.status(401).send(dictionary.error_list.invalid_password)

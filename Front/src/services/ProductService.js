@@ -9,6 +9,7 @@ import axios from 'axios'
 //   serverError
 // } from '@/assets/notifications'
 import { origin, protocol } from '@/assets/dictionary'
+import { getHeaders } from './LoginService'
 
 
 // because of console logs
@@ -25,7 +26,7 @@ export const getProductList = async (searchTerm = '', priceMin = '', priceMax = 
   }
   userId && (origin += `/user/${userId}`)
   try {
-    let response = await axios.get(`${protocol}://${origin}/product/${query}`)
+    let response = await axios.get(`${protocol}://${origin}/product/${query}`, getHeaders())
     return response.data
   }
   catch (error) {
@@ -36,7 +37,7 @@ export const getProductList = async (searchTerm = '', priceMin = '', priceMax = 
 
 export const getProduct = async (uuid) => {
   try {
-    let response = await axios.get(`${protocol}://${origin}/product/${uuid}`)
+    let response = await axios.get(`${protocol}://${origin}/product/${uuid}`, getHeaders())
     return response.data
   }
   catch (error) {
@@ -48,7 +49,7 @@ export const getProduct = async (uuid) => {
 
 export const addProduct = async (data) => {
   try {
-    let response = await axios.post(`${protocol}://${origin}/product/`, data)
+    let response = await axios.post(`${protocol}://${origin}/product/`, data, getHeaders())
     // this.$notify(productAddSuccess)
     return response.data
   }
@@ -60,7 +61,7 @@ export const addProduct = async (data) => {
 
 export const updateProduct = async (uuid, data) => {
   try {
-    let response = await axios.put(`${protocol}://${origin}/product/${uuid}`, data)
+    let response = await axios.put(`${protocol}://${origin}/product/${uuid}`, data, getHeaders())
     // this.$notify(productUpdateSuccess)
     return response.data
   }
@@ -72,7 +73,7 @@ export const updateProduct = async (uuid, data) => {
 
 export const deleteProduct = async (uuid) => {
   try {
-    let response = await axios.delete(`${protocol}://${origin}/product/${uuid}`)
+    let response = await axios.delete(`${protocol}://${origin}/product/${uuid}`, getHeaders())
     // this.$notify(productDeleteSuccess)
     return response.data
   }
