@@ -36,14 +36,14 @@ export const router = new Router({
   ]
 })
 
-router.beforeEach((to, next) => {
+router.beforeEach(async (to, from, next) => {
   const publicPages = ['/login', '/register', '/404']
   const authRequired = !publicPages.includes(to.path)
-  const loggedIn = logInCheck()
+  const loggedIn = await(authRequired ? logInCheck() : false)
 
   if (authRequired && !loggedIn) {
     return next('/login')
   }
 
-  next();
+  next()
 })
