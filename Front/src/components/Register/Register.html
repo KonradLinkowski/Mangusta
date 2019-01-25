@@ -1,10 +1,12 @@
 <section id='Register'>
   <article class='container'>
-    <h1>Register</h1>
-    <h3>Login:</h3><input id='login' placeholder='Enter your login...'/><br>
-    <h3>Email:</h3><input id='email' type='email' placeholder='Enter your email...'/><br>
-    <h3>Password:</h3><input id='password' type='password' placeholder='Enter your password...'/><br>
-    <button id='send'>Send</button><br>
-    <router-link to='login'><- Go back to login page</router-link>
+    <form class='register-form'>
+        <h1>Register</h1>
+        <h3>Login:</h3><input required id='login' placeholder='Enter your login...'/><br>
+        <h3>Email:</h3><input required id='email' type='email' placeholder='Enter your email...'/><br>
+        <h3>Password:</h3><input required id='password' type='password' placeholder='Enter your password...'/><br>
+        <button id='send'>Send</button><br>
+        <router-link to='login'><- Go back to login page</router-link>
+    </form>
   </article>
 </section>
