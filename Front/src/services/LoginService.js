@@ -36,6 +36,20 @@ export const logIn = async (login, password) => {
   }
 }
 
+export const logInCheck = async () => {
+  const token = localStorage.getItem('mongoose-token')
+  if (!token) {
+    logOut()
+    return false
+  } else {
+    let response = await axios.post(`${protocol}://${origin}/auth/login`, getHeaders())
+    console.log(response)
+    localStorage.setItem('mongoose-item', response.headers['x-auth-token'])
+    localStorage.setItem('mongoose-user', JSON.stringify(response.data))
+    return true
+  }
+}
+
 export const logOut = async () => {
   let response = await axios.post(`${protocol}://${origin}/auth/logout`)
   console.log(response)
