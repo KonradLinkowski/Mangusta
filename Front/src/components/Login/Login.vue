@@ -12,18 +12,17 @@ export default {
       password: ''
     }
   },
-  mounted () {
-    // eslint-disable-next-line
-    console.log('chuj')
-  },
   methods: {
     async loginAction () {
       try {
         let response = await logIn(this.login, this.password)
         // eslint-disable-next-line
         console.log('login action success')
-        localStorage.setItem('mongoose-token', response.headers['x-auth-token'])
-        localStorage.setItem('mongoose-user', JSON.stringify(response.data))
+        if (response) {
+          this.$router.push('/')
+        } else {
+          console.log('Something went wrong!')
+        }
       } catch (error) {
         // eslint-disable-next-line
         console.log(error)
