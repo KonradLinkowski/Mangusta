@@ -1,19 +1,20 @@
 import axios from 'axios'
-import {
-  productAddSuccess,
-  // productAddError,
-  productUpdateSuccess,
-  // productUpdateError,
-  productDeleteSuccess,
-  // productDeleteError,
-  serverError
-} from '@/assets/notifications'
+// import {
+//   productAddSuccess,
+//   productAddError,
+//   productUpdateSuccess,
+//   productUpdateError,
+//   productDeleteSuccess,
+//   productDeleteError,
+//   serverError
+// } from '@/assets/notifications'
 import { origin, protocol } from '@/assets/dictionary'
+import { getHeaders } from './LoginService'
 
 
 // because of console logs
 /*eslint-disable*/
-export const getProductList = async (searchTerm = "", priceMin = "", priceMax = "", category = []) => {
+export const getProductList = async (searchTerm = '', priceMin = '', priceMax = '', category = [], userId ='') => {
   let query = ''
   if (searchTerm || priceMin || priceMax || category.length) {
     query += '?'
@@ -23,33 +24,35 @@ export const getProductList = async (searchTerm = "", priceMin = "", priceMax = 
     category.length && (query += `category=${category}&`)
     query = query.substring(0, query.length - 1)
   }
+  userId && (origin += `/user/${userId}`)
   try {
-    let response = await axios.get(`${protocol}://${origin}/product/${query}`)
+    let response = await axios.get(`${protocol}://${origin}/product/${query}`, getHeaders())
     return response.data
   }
   catch (error) {
     console.log(error)
-    this.$notify(serverError)
     return []
   }
 }
 
 export const getProduct = async (uuid) => {
   try {
-    let response = await axios.get(`${protocol}://${origin}/product/${uuid}`)
+    let response = await axios.get(`${protocol}://${origin}/product/${uuid}`, getHeaders())
     return response.data
   }
   catch (error) {
     console.log(error)
-    this.$notify(serverError)
+    // this.$notify(serverError)
     return {}
   }
 }
 
 export const addProduct = async (data) => {
   try {
-    await axios.post(`${protocol}://${origin}/product/`, data)
-    this.$notify(productAddSuccess) }
+    let response = await axios.post(`${protocol}://${origin}/product/`, data, getHeaders())
+    // this.$notify(productAddSuccess)
+    return response.data
+  }
   catch (error) {
     console.log(error)
     // this.$notify(productAddError)
@@ -58,8 +61,9 @@ export const addProduct = async (data) => {
 
 export const updateProduct = async (uuid, data) => {
   try {
-    await axios.put(`${protocol}://${origin}/product/${uuid}`, data)
-    this.$notify(productUpdateSuccess)
+    let response = await axios.put(`${protocol}://${origin}/product/${uuid}`, data, getHeaders())
+    // this.$notify(productUpdateSuccess)
+    return response.data
   }
   catch (error) {
     console.log(error)
@@ -69,8 +73,9 @@ export const updateProduct = async (uuid, data) => {
 
 export const deleteProduct = async (uuid) => {
   try {
-    await axios.delete(`${protocol}://${origin}/product/${uuid}`)
-    this.$notify(productDeleteSuccess)
+    let response = await axios.delete(`${protocol}://${origin}/product/${uuid}`, getHeaders())
+    // this.$notify(productDeleteSuccess)
+    return response.data
   }
   catch (error) {
     console.log(error)

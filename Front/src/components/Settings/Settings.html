@@ -1,3 +1,9 @@
-<h1 id='Settings'>
-  Yeyyyy! Thanks to our page you will be able to change sth some day!
-</h1>
+<section id='Settings'>
+  <article class='container'>
+    <h1>Settings</h1>
+    <h3>Login:</h3><input id='login' v-model='login' placeholder='Enter your login...'/><br>
+    <h3>Email:</h3><input id='email' v-model='email' type='email' placeholder='Enter your email...'/><br>
+    <button id='save'>Save</button><br>
+    <router-link to='/'><- Go back to home page</router-link>
+  </article>
+</section>

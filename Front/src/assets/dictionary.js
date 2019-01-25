@@ -1,5 +1,5 @@
 export const origin = 'localhost:3000' // in future there will be real name
-export const protocol = 'http' // in future there will be real protocol i.e. "http://"
+export const protocol = 'http' // in future there will be real protocol
 
 export const notification_system_labels = {
   title: {
@@ -9,7 +9,11 @@ export const notification_system_labels = {
     product_update_success: 'Product Update',
     product_update_error: 'Product Update',
     product_delete_success: 'Product Delete',
-    product_delete_error: 'Product Delete'
+    product_delete_error: 'Product Delete',
+    login_success: 'Log In Success',
+    login_error: 'Log In Error',
+    logout_success: 'Log Out Success',
+    logout_error: 'Log Out Error'
   },
   text: {
     server_error: 'Our server is down, take yourself a break ;)',
@@ -18,6 +22,10 @@ export const notification_system_labels = {
     product_update_success: 'Product update success!',
     product_update_error: 'Product update failure!',
     product_delete_success: 'Product delete success!',
-    product_delete_error: 'Product delete failure!'
+    product_delete_error: 'Product delete failure!',
+    login_success: 'Welcome to mongoose!',
+    login_error: 'Login Error!',
+    logout_success: 'Goodbye!',
+    logout_error: 'Log Out Error!'
   }
 }

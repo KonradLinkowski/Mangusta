@@ -3,13 +3,9 @@
   @import './AddProduct.scss'
 </style>
 <script>
-import { productAddSuccess, productAddError, serverError } from '@/assets/notifications'
-import { getTags,
-  createProduct
-} from '@/services/api'
+import { productAddSuccess, productAddError } from '@/assets/notifications'
+import { getTagList } from '@/services/TagService'
 import { addProduct } from '@/services/ProductService'
-
-
 
 export default {
   data() {
@@ -33,8 +29,10 @@ export default {
       if (this.validateProduct(this.product)) {
         try {
           const result = await addProduct(this.product)
+          // eslint-disable-next-line
+          console.log(result)
           this.$notify(productAddSuccess)
-          // this.$router.push({ name: 'products/id', params: { id: result._id } })
+          // this.$router.push({ name: `products/${result._id}` })
         } catch (err) {
           this.$notify(productAddError)
         }
@@ -42,10 +40,11 @@ export default {
         this.$notify(productAddError)
       }
     },
-    validateProduct(prod) {
+    validateProduct () {
       const entries = Object.entries(this.$refs)
       return entries.reduce((p, ref) =>{
         if (!this.isValid(ref[0])) {
+          // eslint-disable-next-line
           console.log(ref, 'is not valid')
           ref[1].classList.toggle('input-error', true)
           return false
@@ -54,32 +53,25 @@ export default {
         return p && true
       }, true)
     },
-    isValid(prop) {
-      const prod = this.product
+    isValid (prop) {
       switch (prop) {
         case 'price':
-        return !Number.isNaN(Number(prod.price)) && prod.price.toString().split('.')[1].length === 2
+          return !Number.isNaN(Number(this.product.price)) && this.product.price.toString().split('.')[1].length === 2
         case 'quantity':
-        return Number.isInteger(Number(prod.quantity))
+          return Number.isInteger(Number(this.product.quantity))
         case 'name':
-        return prod.name.match(/^[^\s]+(\s+[^\s]+)*$/)
-        // case 'description':
-        // return prod.description.length !== 0
-        // case 'category':
-        // return prod.category.length !== 0
+          return this.product.name.match(/^[^\s]+(\s+[^\s]+)*$/)
         default:
-        return true
+          return true
       }
+    },
+    async getTags () {
+      // eslint-disable-next-line
+      try { this.tags = await getTagList() } catch (error) { console.log(error) }
     }
   },
   mounted() {
-    getTags()
-    .then(tags => {
-      this.tags = tags
-    })
-    .catch(err => {
-      this.$notify(serverError)
-    })
+    this.getTags()
   }
 }
 </script>

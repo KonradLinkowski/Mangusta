@@ -3,6 +3,10 @@ const mongoose = require('mongoose')
 
 const ProductSchema = new mongoose.Schema({
   name: { type: String, required: true },
+  // dunno if it will work like that
+  user: {
+    id: { type: String, required: true }
+  },
   price: {
     type: Number,
     required: true,
@@ -23,6 +27,14 @@ const ProductSchema = new mongoose.Schema({
     validate: {
       validator: Number.isInteger,
       message: props => `${props.value} is not a valid quantity!`
+    }
+  },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    validate: {
+      validator: mongoose.Types.ObjectId.isValid,
+      message: props => `${props.value} is not a valid user id!`
     }
   },
   category: [String],
