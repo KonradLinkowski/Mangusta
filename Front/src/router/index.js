@@ -37,7 +37,7 @@ export const router = new Router({
 })
 
 router.beforeEach(async (to, from, next) => {
-  const publicPages = ['/login', '/register', '/404']
+  const publicPages = ['/login', '/register', '/404', '/forgot-password']
   const authRequired = !publicPages.includes(to.path)
   const loggedIn = await(authRequired ? logInCheck() : false)
 
