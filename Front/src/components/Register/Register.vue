@@ -19,7 +19,12 @@ export default {
   methods: {
     async registerAction () {
       try {
-        
+        const user = {
+          login: this.login,
+          email: this.email,
+        }
+        addUser({  })
+        console.log('here')
       } catch (error) {
         // eslint-disable-next-line
         console.log(error)
