@@ -29,8 +29,8 @@ export const router = new Router({
     { path: '/products', component: ProductList },
     { path: '/addproduct', component: AddProduct },
     { path: '/products/:id', component: ProductPage },
-    { path: '/user/:user_id/product', component: UserProductList },
-    { path: '/user/:user_id/product/:product_id', component: UserProduct },
+    { path: '/userproductlist', component: UserProductList },
+    { path: '/userproductlist/:product_id', component: UserProduct },
     { path: '/404', component: NotFound },
     { path: '*', redirect: '/404', }
   ]
