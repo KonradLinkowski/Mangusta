@@ -6,6 +6,7 @@
 import Product from '../Product/Product'
 import { getProductList } from '@/services/ProductService'
 export default {
+  /* eslint-disable */
   components: { Product },
   data: function() {
     return {
@@ -17,17 +18,13 @@ export default {
     }
   },
   created: async function () {
-    this.productList = await getProductList('', '', '', [], JSON.parse(localStorage.getItem('mongoose-user')).id)
-  },
-  methods: {
-    async search () {
-        try {
-          this.productList = await getProductList(this.searchTerm, this.priceMin, this.priceMax, this.category)
-        } catch (error) {
-          // eslint-disable-next-line
-          console.log(error)
-        }
-      }
+    try {
+      // const user = JSON.parse(localStorage.getItem('mongoose-user'))
+      this.productList = await getProductList('', '', '', [], JSON.parse(localStorage.getItem('mongoose-user')).id)
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
+/* eslint-enable */
 </script>

@@ -1,15 +1,9 @@
-<section id='UserProductList'>
-    <input v-model='searchTerm' placeholder='Search...' id='search-term'>
-    <Button v-on:click='search'>Search</Button>
-    <article class='search_price_envoirement'>
-      Price from 
-      <input v-model='priceMin' placeholder='min'>
-      to 
-      <input v-model='priceMax' placeholder='max'>
-    </article>
-    
+<section id='UserProductList' class='outer-section'>
+  <article class='container'>
+    <h1>My product list</h1>
     <UserProduct
-    v-for='product in productList'
-    v-bind:key='product._id'
-    v-bind:product='product'></UserProduct>
+      v-for='product in productList'
+      v-bind:key='product._id'
+      v-bind:product='product'></UserProduct>
+  </article>
 </section>
