@@ -7,8 +7,10 @@
       <h3 class=''>Password</h3>
       <input required type='password' id='password' v-model='password' placeholder='Type password...'/><br>
       <button type="submit">Sign in</button>
-      <span class='float-left'><router-link to='register'>Don't have an account?</router-link></span>
-      <span class='float-right'><router-link to='forgot-password'>Forgot password</router-link></span>
+      <section class='router-links'>
+          <span class='float-left'><router-link to='register'>Don't have an account?</router-link></span>
+          <span class='float-right'><router-link to='forgot-password'>Forgot password</router-link></span>
+      </section>
     </form>
   </div>
 </section>
