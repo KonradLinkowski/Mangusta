@@ -1,6 +1,6 @@
 <template >
   <section id="app">
-    <section id='ToolBar'>
+    <section id='ToolBar' v-bind:style="{ visibility: isShown }">
       <router-link class='float-left' to="/"><img src="./assets/mongoose_256.png" class="logo" alt="Mongoose logo" /></router-link>
       <router-link class='float-right' to="/addproduct"><span class='router-link'>Add product</span></router-link>
       <router-link class='float-right' to="/cart"><span class='router-link'>Cart</span></router-link>
@@ -20,12 +20,26 @@
 import Footer from './components/Footer/Footer'
 
 export default {
+  data: function () {
+    return {
+      isShown: 'hidden'
+    }
+  },
   components: {
     Footer
   },
   methods: {
-    
-  }
+    toolBarDisplay: function () {
+      console.log('sowa', localStorage.getItem('mongoose-user'), localStorage.getItem('mongoose-token'),
+        localStorage.getItem('mongoose-user') && localStorage.getItem('mongoose-token'))
+      if (localStorage.getItem('mongoose-user') && localStorage.getItem('mongoose-token')) {
+        this.isShown='visible'
+      }
+    }
+  },
+  mounted() {
+    this.toolBarDisplay()
+  },
 }
 </script>
 

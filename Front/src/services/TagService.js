@@ -33,6 +33,7 @@ export const addTag = async (data) => {
   }
   catch (error) {
     console.log(error)
+    return {}
   }
 }
 
@@ -43,6 +44,7 @@ export const updateTag = async (uuid, data) => {
   }
   catch (error) {
     console.log(error)
+    return {}
   }
 }
 
@@ -53,6 +55,7 @@ export const deleteTag = async (uuid) => {
   }
   catch (error) {
     console.log(error)
+    return {}
   }
 }
 /*eslint-enable*/

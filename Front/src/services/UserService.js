@@ -21,6 +21,7 @@ export const addUser = async (data) => {
   }
   catch (error) {
     console.log(error)
+    return {}
   }
 }
 
@@ -31,6 +32,7 @@ export const updateUser = async (uuid, data) => {
   }
   catch (error) {
     console.log(error)
+    return {}
   }
 }
 
@@ -41,6 +43,7 @@ export const deleteUser = async (uuid) => {
   }
   catch (error) {
     console.log(error)
+    return {}
   }
 }
 /*eslint-enable*/

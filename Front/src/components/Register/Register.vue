@@ -23,7 +23,7 @@ export default {
           login: this.login,
           email: this.email,
         }
-        addUser({  })
+        addUser(user)
         console.log('here')
       } catch (error) {
         // eslint-disable-next-line

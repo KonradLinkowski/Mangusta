@@ -56,6 +56,7 @@ export const addProduct = async (data) => {
   catch (error) {
     console.log(error)
     // this.$notify(productAddError)
+    return {}
   }
 }
 
@@ -68,6 +69,7 @@ export const updateProduct = async (uuid, data) => {
   catch (error) {
     console.log(error)
     // this.$notify(productUpdateError)
+    return {}
   }
 }
 
@@ -80,6 +82,7 @@ export const deleteProduct = async (uuid) => {
   catch (error) {
     console.log(error)
     // this.$notify(productDeleteError)
+    return {}
   }
 }
 /*eslint-enable*/
