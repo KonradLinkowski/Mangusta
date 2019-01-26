@@ -1,5 +1,6 @@
 import { origin, protocol } from '@/assets/dictionary'
 import axios from 'axios'
+import { router } from '../router'
 
 /*eslint-disable*/
 export const getHeaders = async () => {
@@ -32,13 +33,14 @@ export const logIn = async (login, password) => {
     console.log(response)
     localStorage.setItem('mongoose-item', response.headers['x-auth-token'])
     localStorage.setItem('mongoose-user', JSON.stringify(response.data))
+    router.push('/')
     return true
   }
 }
 
 export const logInCheck = async () => {
   const token = localStorage.getItem('mongoose-token')
-  if (!token) {
+  if (!token || localStorage.getItem('mongoose-user')) {
     logOut()
     return false
   } else {
@@ -56,6 +58,18 @@ export const logInCheck = async () => {
   }
 }
 
+export const register = async (data) => {
+  try {
+    let response = await axios.post(`${protocol}://${origin}/auth/register`, data, getHeaders())
+    router.push('/')
+    return response.data
+  }
+  catch (error) {
+    console.log(error)
+    return {}
+  }
+}
+
 export const logOut = async () => {
   try {
     let response = await axios.post(`${protocol}://${origin}/auth/logout`)
@@ -64,6 +78,7 @@ export const logOut = async () => {
     console.log('log out error: ', error)
   }
   tokenRemoveHandler()
+  router.push('/login')
 }
 
 /*eslint-enable*/

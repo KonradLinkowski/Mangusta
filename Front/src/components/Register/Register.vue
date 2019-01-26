@@ -3,7 +3,7 @@
   @import './Register.scss'
 </style>
 <script>
-import { addUser } from '@/services/UserService'
+import { register } from '@/services/LoginService'
 
 /* eslint-disable */
 export default {
@@ -26,7 +26,7 @@ export default {
           email: this.email,
           password: this.password
         }
-        const response = await addUser(user)
+        const response = await register(user)
         console.log('here', response)
       } catch (error) {
         console.log('register error: ', error)
@@ -37,9 +37,6 @@ export default {
     //   !this.email.match(/^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/) && (this.emailError = true)
     //   !this.password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{4,8}$/) && (this.passwordError = true)
     // },
-    logSth () {
-      console.log('sth')
-    }
   }
 }
 /* eslint-enable */

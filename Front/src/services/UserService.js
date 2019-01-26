@@ -16,7 +16,7 @@ export const getUser = async (uuid) => {
 
 export const addUser = async (data) => {
   try {
-    let response = await axios.post(`${protocol}://${origin}/auth/register`, data, getHeaders())
+    let response = await axios.post(`${protocol}://${origin}/user`, data, getHeaders())
     return response.data
   }
   catch (error) {
