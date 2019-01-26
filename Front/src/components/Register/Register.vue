@@ -5,6 +5,7 @@
 <script>
 import { addUser } from '@/services/UserService'
 
+/* eslint-disable */
 export default {
   data () {
     return {
@@ -26,7 +27,6 @@ export default {
         addUser(user)
         console.log('here')
       } catch (error) {
-        // eslint-disable-next-line
         console.log(error)
       }
     },
@@ -41,4 +41,5 @@ export default {
     }
   }
 }
+/* eslint-enable */
 </script>

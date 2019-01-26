@@ -5,6 +5,7 @@
 <script>
 import { logIn } from '@/services/LoginService'
 
+/* eslint-disable */
 export default {
   data () {
     return {
@@ -16,7 +17,6 @@ export default {
     async loginAction () {
       try {
         let response = await logIn(this.login, this.password)
-        // eslint-disable-next-line
         console.log('login action success')
         if (response) {
           this.$router.push('/')
@@ -24,10 +24,10 @@ export default {
           console.log('Something went wrong!')
         }
       } catch (error) {
-        // eslint-disable-next-line
         console.log('Login catched error: ', error)
       }
     }
   }
 }
+/* eslint-enable */
 </script>
