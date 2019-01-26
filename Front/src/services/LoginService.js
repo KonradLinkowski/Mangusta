@@ -42,17 +42,27 @@ export const logInCheck = async () => {
     logOut()
     return false
   } else {
-    let response = await axios.post(`${protocol}://${origin}/auth/login`, getHeaders())
-    console.log(response)
-    localStorage.setItem('mongoose-item', response.headers['x-auth-token'])
-    localStorage.setItem('mongoose-user', JSON.stringify(response.data))
-    return true
+    try {
+      let response = await axios.post(`${protocol}://${origin}/auth/login`, getHeaders())
+      console.log(response)
+      localStorage.setItem('mongoose-item', response.headers['x-auth-token'])
+      localStorage.setItem('mongoose-user', JSON.stringify(response.data))
+      return true
+    } catch (error) {
+      console.log('Login check error: ', error)
+      logOut()
+      return false
+    }
   }
 }
 
 export const logOut = async () => {
-  let response = await axios.post(`${protocol}://${origin}/auth/logout`)
-  console.log(response)
+  try {
+    let response = await axios.post(`${protocol}://${origin}/auth/logout`)
+    console.log('log out response: ', response)
+  } catch (error) {
+    console.log('log out error: ', error)
+  }
   tokenRemoveHandler()
 }
 
