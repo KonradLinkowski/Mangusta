@@ -10,32 +10,33 @@ export default {
   data () {
     return {
       login: '',
-      loginError: false,
+      firstName: '',
+      lastName: '',
       email: '',
-      emailError: false,
       password: '',
-      passwordError: false
     }
   },
   methods: {
     async registerAction () {
       try {
         const user = {
-          login: this.login,
+          username: this.login,
+          firstName: this.firstName,
+          lastName: this.lastName,
           email: this.email,
+          password: this.password
         }
-        addUser(user)
-        console.log('here')
+        const response = await addUser(user)
+        console.log('here', response)
       } catch (error) {
-        console.log(error)
+        console.log('register error: ', error)
       }
     },
-    isUserValid () {
-      !this.login.match(/$[a-zA-Z0-9]+^/) && (this.loginError = true)
-      !this.email.match(/^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/) && (this.emailError = true)
-      !this.password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{4,8}$/) && (this.passwordError = true)
-
-    },
+    // isUserValid () {
+    //   !this.login.match(/$[a-zA-Z0-9]+^/) && (this.loginError = true)
+    //   !this.email.match(/^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/) && (this.emailError = true)
+    //   !this.password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{4,8}$/) && (this.passwordError = true)
+    // },
     logSth () {
       console.log('sth')
     }

@@ -2,9 +2,11 @@
   <article class='container'>
     <form class='register-form' @submit='registerAction'>
         <h1 onclick="logSth()">Register</h1>
-        <h3>Login:</h3><input required id='login' placeholder='Enter your login...'/><br>
-        <h3>Email:</h3><input type='email' required id='email' placeholder='Enter your email...'/><br>
-        <h3>Password:</h3><input required id='password' type='password' placeholder='Enter your password...'/><br>
+        <h3>Login:</h3><input required id='login' v-model='login' placeholder='Enter your login...'/><br>
+        <h3>First name:</h3><input id='firstName' v-model='firstName' placeholder='Enter your login...'/><br>
+        <h3>Last name:</h3><input id='lastName' v-model='lastName' placeholder='Enter your login...'/><br>
+        <h3>Email:</h3><input type='email' v-model='email' required id='email' placeholder='Enter your email...'/><br>
+        <h3>Password:</h3><input required id='password' v-model='password' type='password' placeholder='Enter your password...'/><br>
         <button id='send'>Send</button><br>
         <router-link to='login'><- Go back to login page</router-link>
     </form>
