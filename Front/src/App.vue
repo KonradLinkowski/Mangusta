@@ -30,14 +30,17 @@ export default {
   },
   methods: {
     toolBarDisplay: function () {
-      console.log('sowa', localStorage.getItem('mongoose-user'), localStorage.getItem('mongoose-token'),
-        localStorage.getItem('mongoose-user') && localStorage.getItem('mongoose-token'))
       if (localStorage.getItem('mongoose-user') && localStorage.getItem('mongoose-token')) {
         this.isShown='visible'
+      } else {
+        this.isShown = 'hidden'
       }
     }
   },
   mounted() {
+    this.toolBarDisplay()
+  },
+  updated() {
     this.toolBarDisplay()
   },
 }

@@ -35,6 +35,9 @@ export default {
       !this.email.match(/^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/) && (this.emailError = true)
       !this.password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{4,8}$/) && (this.passwordError = true)
 
+    },
+    logSth () {
+      console.log('sth')
     }
   }
 }
