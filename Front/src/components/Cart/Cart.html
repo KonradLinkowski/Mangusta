@@ -1,11 +1,14 @@
-<section id='ProductList'>
-  <div v-for='product in productList'>
-    <Product
-    :key='product.id'
-    :product='product'></Product>
-    <button @click="removeFromCart(product)">Remove from cart</button>
-  </div>
-  <div>
-    Total price: {{ productsCost }}
-  </div>
+<section id='ProductList' class='outer-container'>
+  <article class='container'>
+    <h1>Your cart</h1>
+    <div v-for='product in productList'>
+      <Product
+      :key='product.id'
+      :product='product'></Product>
+      <button @click="removeFromCart(product)">Remove from cart</button>
+    </div>
+    <div>
+      Total price: {{ productsCost }}
+    </div>
+  </article>
 </section>

@@ -1,4 +1,5 @@
-<section id='ProductList'>
+<section id='ProductList' class='outer-container'>
+  <article class='container'>
     <input v-model="searchTerm" placeholder="Search..." id="search-term">
     <Button v-on:click="search">Search</Button>
     <article class='search_price_envoirement'>
@@ -12,4 +13,5 @@
     v-for='product in productList' 
     :key='product._id' 
     :product='product'></Product>
+  </article>
 </section>
