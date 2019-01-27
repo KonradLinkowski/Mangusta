@@ -51,6 +51,7 @@ body {
 a, a:visited {
   text-decoration: none;
   color: #ffff7f;
+  cursor: pointer;
 }
 
 a:hover, a:active {
@@ -123,12 +124,20 @@ button {
   cursor: pointer;
 }
 
-#icon_cart {
+#icon_cart_empty {
   background: url("../assets/cart_empty_yellow.png") no-repeat center center;
 }
 
-#icon_cart:hover {
+#icon_cart_empty:hover {
   background: url("../assets/cart_empty_red.png") no-repeat center center black;
+}
+
+#icon_cart_full {
+  background: url("../assets/cart_full_yellow.png") no-repeat center center;
+}
+
+#icon_cart_full:hover {
+  background: url("../assets/cart_full_red.png") no-repeat center center black;
 }
 
 #icon_settings {
