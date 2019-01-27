@@ -27,6 +27,7 @@ const production = process.env.NODE_ENV === 'production'
 
 app.use('/', require('./routes/product-routes'))
 app.use('/', require('./routes/tag-routes'))
+app.use('/', require('./routes/user-routes'))
 
 // set mongoose promise handling
 mongoose.Promise = global.Promise
