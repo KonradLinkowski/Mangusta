@@ -18,6 +18,7 @@ export default {
   },
   methods: {
     async registerAction () {
+      console.log('register try!')
       try {
         const user = {
           username: this.login,
@@ -37,7 +38,8 @@ export default {
     //   !this.email.match(/^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/) && (this.emailError = true)
     //   !this.password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{4,8}$/) && (this.passwordError = true)
     // },
-  }
+  },
+  mounted: function () { console.log('chuj') }
 }
 /* eslint-enable */
 </script>

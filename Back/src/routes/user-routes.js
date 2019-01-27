@@ -5,30 +5,46 @@ const User = require('../models/user-schema')
 const dictionary = require('../store/dictionary.json')
 
 
-router.route('/auth/register').post((request, response) => {
+router.route('/auth/register').post(async(request, response) => {
   const data = request.body
   const user = new User()
-  User.findOne({
-    email: data.email
-  }, (error, userFound) => {
-    if (userFound) {
-      response.status(400).send(dictionary.error_list.email_taken)
-    } else if (error) {
-      user.save((userSaveError, savedUser) => {
-        if (userSaveError) {
-          response.status(500).send(dictionary.error_list.default)
-        } else {
-          response.status(201).send(dictionary.success_list.default)
-          response.json({
-            "x-auth-token": savedUser.generateToken(),
-            "user": savedUser
-          })
-        }
-      })
-    } else {
-      response.status(500).send(dictionary.error_list.default)
-    }
-  })
+  console.log(data)
+
+  try {
+    const savedUser = await user.save()
+    console.log('new user: ', savedUser)
+    response.status(201).send(dictionary.success_list.default)
+    response.json({
+      "x-auth-token": savedUser.generateToken(),
+      "user": savedUser
+    })
+  } catch (error) {
+    response.status(400).send(dictionary.error_list.email_taken)
+    console.log(error)
+  }
+  // const user = new User()
+  // user.findOne({
+  //   email: data.email
+  // }, (error, userFound) => {
+  //   console.log('user found: ', userFound, '\nerror: ', error)
+  //   if (userFound) {
+  //     response.status(400).send(dictionary.error_list.email_taken)
+  //   } else if (error) {
+  //     user.save((userSaveError, savedUser) => {
+  //       if (userSaveError) {
+  //         response.status(500).send(dictionary.error_list.default)
+  //       } else {
+          // response.status(201).send(dictionary.success_list.default)
+          // response.json({
+          //   "x-auth-token": savedUser.generateToken(),
+          //   "user": savedUser
+          // })
+  //       }
+  //     })
+  //   } else {
+  //     response.status(500).send(dictionary.error_list.default)
+  //   }
+  // })
 })
 
 
