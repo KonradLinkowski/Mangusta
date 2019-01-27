@@ -8,7 +8,7 @@ import axios from 'axios'
 //   productDeleteError,
 //   serverError
 // } from '@/assets/notifications'
-import { origin, protocol } from '@/assets/dictionary'
+import { backendAddress, protocol } from '../assets/dictionary'
 import { getHeaders } from './LoginService'
 
 
@@ -24,9 +24,9 @@ export const getProductList = async (searchTerm = '', priceMin = '', priceMax = 
     category.length && (query += `category=${category}&`)
     query = query.substring(0, query.length - 1)
   }
-  userId && (origin += `/user/${userId}`)
+  userId && (backendAddress += `/user/${userId}`)
   try {
-    let response = await axios.get(`${protocol}://${origin}/product/${query}`, getHeaders())
+    let response = await axios.get(`${protocol}://${backendAddress}/product/${query}`, getHeaders())
     return response.data
   }
   catch (error) {
@@ -37,7 +37,7 @@ export const getProductList = async (searchTerm = '', priceMin = '', priceMax = 
 
 export const getProduct = async (uuid) => {
   try {
-    let response = await axios.get(`${protocol}://${origin}/product/${uuid}`, getHeaders())
+    let response = await axios.get(`${protocol}://${backendAddress}/product/${uuid}`, getHeaders())
     return response.data
   }
   catch (error) {
@@ -49,7 +49,7 @@ export const getProduct = async (uuid) => {
 
 export const addProduct = async (data) => {
   try {
-    let response = await axios.post(`${protocol}://${origin}/product/`, data, getHeaders())
+    let response = await axios.post(`${protocol}://${backendAddress}/product/`, data, getHeaders())
     // this.$notify(productAddSuccess)
     return response.data
   }
@@ -62,7 +62,7 @@ export const addProduct = async (data) => {
 
 export const updateProduct = async (uuid, data) => {
   try {
-    let response = await axios.put(`${protocol}://${origin}/product/${uuid}`, data, getHeaders())
+    let response = await axios.put(`${protocol}://${backendAddress}/product/${uuid}`, data, getHeaders())
     // this.$notify(productUpdateSuccess)
     return response.data
   }
@@ -75,7 +75,7 @@ export const updateProduct = async (uuid, data) => {
 
 export const deleteProduct = async (uuid) => {
   try {
-    let response = await axios.delete(`${protocol}://${origin}/product/${uuid}`, getHeaders())
+    let response = await axios.delete(`${protocol}://${backendAddress}/product/${uuid}`, getHeaders())
     // this.$notify(productDeleteSuccess)
     return response.data
   }

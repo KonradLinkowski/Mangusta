@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { origin, protocol } from '../../assets/dictionary'
+import { backendAddress, protocol } from '../../assets/dictionary'
 
 // import {
 //   productAddSuccess,
@@ -13,7 +13,7 @@ import { origin, protocol } from '../../assets/dictionary'
 // } from '../assets/notifications'
 
 const req = axios.create({
-  baseURL: `${protocol}://${origin}/product`,
+  baseURL: `${protocol}://${backendAddress}/product`,
 })
 
 // initial state
@@ -34,6 +34,8 @@ const actions = {
   loadProducts ({ commit }, parameters) {
     req.get(parameters)
     .then(({ data }) => {
+      // eslint-disable-next-line
+      console.log(data)
       commit()
     })
     .catch(err => {
@@ -50,9 +52,9 @@ const mutations = {
   removeChatBox(state, { chat }) {
     state.openedChats.splice(state.openedChats.findIndex(e => e == chat), 1)
   },
-  fail (state, { chat }) {
+  // fail (state, { chat }) {
 
-  }
+  // }
 }
 
 export default {

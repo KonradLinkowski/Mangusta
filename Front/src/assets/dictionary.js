@@ -1,4 +1,4 @@
-export const origin = 'localhost:3000' // in future there will be real name
+export const backendAddress = 'localhost:3000' // in future there will be real name
 export const protocol = 'http' // in future there will be real protocol
 
 export const notification_system_labels = {

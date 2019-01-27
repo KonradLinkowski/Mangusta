@@ -1,4 +1,4 @@
-import { origin, protocol } from '@/assets/dictionary'
+import { backendAddress, protocol } from '../assets/dictionary'
 import axios from 'axios'
 import { router } from '../router'
 
@@ -29,7 +29,7 @@ export const logIn = async (login, password) => {
     return false
   } else {
     const hash = `${login}:${password}`.toString('base64')
-    let response = await axios.post(`${protocol}://${origin}/auth/login`, null, { 'Authorization': `Basic ${hash}` })
+    let response = await axios.post(`${protocol}://${backendAddress}/auth/login`, null, { 'Authorization': `Basic ${hash}` })
     console.log(response)
     localStorage.setItem('mongoose-item', response.headers['x-auth-token'])
     localStorage.setItem('mongoose-user', JSON.stringify(response.data))
@@ -45,7 +45,7 @@ export const logInCheck = async () => {
     return false
   } else {
     try {
-      let response = await axios.post(`${protocol}://${origin}/auth/login`, getHeaders())
+      let response = await axios.post(`${protocol}://${backendAddress}/auth/login`, getHeaders())
       console.log(response)
       localStorage.setItem('mongoose-item', response.headers['x-auth-token'])
       localStorage.setItem('mongoose-user', JSON.stringify(response.data))
@@ -60,7 +60,7 @@ export const logInCheck = async () => {
 
 export const register = async (data) => {
   try {
-    let response = await axios.post(`${protocol}://${origin}/auth/register`, data, getHeaders())
+    let response = await axios.post(`${protocol}://${backendAddress}/auth/register`, data, getHeaders())
     router.push('/')
     return response.data
   }
@@ -72,7 +72,7 @@ export const register = async (data) => {
 
 export const logOut = async () => {
   try {
-    let response = await axios.post(`${protocol}://${origin}/auth/logout`)
+    let response = await axios.post(`${protocol}://${backendAddress}/auth/logout`)
     console.log('log out response: ', response)
   } catch (error) {
     console.log('log out error: ', error)
