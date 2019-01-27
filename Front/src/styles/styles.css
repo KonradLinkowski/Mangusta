@@ -37,6 +37,7 @@ body {
 
 .menu-icon {
   width: 20px;
+  height: 20px;
 }
 
 .logo {
@@ -57,9 +58,8 @@ a:hover, a:active {
 }
 
 .router-link {
-  display: inline-block;
-  padding: 22px 30px;
-  font-size: 20px;
+  display: block;
+  padding: 25px 30px;
 }
 
 .router-link:active, .router-link:hover {
@@ -121,4 +121,44 @@ button {
   border-radius: 3px;
   border: 0px;
   cursor: pointer;
+}
+
+#icon_cart {
+  background: url("../assets/cart_empty_yellow.png") no-repeat center center;
+}
+
+#icon_cart:hover {
+  background: url("../assets/cart_empty_red.png") no-repeat center center black;
+}
+
+#icon_settings {
+  background: url("../assets/settings_yellow.png") no-repeat center center;
+}
+
+#icon_settings:hover {
+  background: url("../assets/settings_red.png") no-repeat center center black;
+}
+
+#icon_add {
+  background: url("../assets/add_yellow.png") no-repeat center center;
+}
+
+#icon_add:hover {
+  background: url("../assets/add_red.png") no-repeat center center black;
+}
+
+#icon_checklist {
+  background: url("../assets/checklist_yellow.png") no-repeat center center;
+}
+
+#icon_checklist:hover {
+  background: url("../assets/checklist_red.png") no-repeat center center black;
+}
+
+#icon_user {
+  background: url("../assets/user_yellow.png") no-repeat center center;
+}
+
+#icon_user:hover {
+  background: url("../assets/user_red.png") no-repeat center center black;
 }

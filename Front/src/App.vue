@@ -4,20 +4,15 @@
       <router-link class='float-left' to="/"><span class='router-link' style='padding: 0;'>
         <img src="./assets/mongoose_256.png" class="logo" alt="Mongoose logo" />
       </span></router-link>
-      <router-link class='float-right' to="/login"><span class='router-link'>
-        <img src="./assets/user_yellow.png" class='menu-icon' alt="User icon --> log out link" />
+      <router-link class='float-right' to="/login"><span class='router-link menu-icon' id='icon_user'>
       </span></router-link>
-      <router-link class='float-right' to="/settings"><span class='router-link'>
-        <img src="./assets/settings_yellow.png" class='menu-icon' alt="Settings icon" />
+      <router-link class='float-right' to="/settings"><span class='router-link menu-icon' id='icon_settings'>
       </span></router-link>
-      <router-link class='float-right' to="/cart"><span class='router-link'>
-        <img src="./assets/cart_empty_yellow.png" class='menu-icon' alt="Cart icon" />
+      <router-link class='float-right' to="/cart"><span class='router-link menu-icon' id='icon_cart'>
       </span></router-link>
-      <router-link class='float-right' to="/userproductlist"><span class='router-link'>
-        <img src="./assets/checklist_yellow.png" class='menu-icon' alt="User product list icon" />
+      <router-link class='float-right' to="/userproductlist"><span class='router-link menu-icon' id='icon_checklist'>
       </span></router-link>
-      <router-link class='float-right' to="/addproduct"><span class='router-link'>
-        <img src="./assets/add_yellow.png" class='menu-icon' alt="Add product icon" />
+      <router-link class='float-right' to="/addproduct"><span class='router-link menu-icon' id='icon_add'>
       </span></router-link>
     </section>
     <div class='clear'></div>

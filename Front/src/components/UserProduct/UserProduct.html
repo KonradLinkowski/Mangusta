@@ -1,9 +1,9 @@
 <section id='UserProduct'>
   <article class='container'>
-    <p><h3>Name</h3><input id='name' v-model='name' /></p>
-    <p><h3>Description</h3><input id='description' v-model='description' /></p>
-    <p><h3>Price</h3><input id='price' v-model='price' /></p>
-    <p><h3>Quantity</h3><input id='quantity' v-model='quantity' /></p>
+    <p><h3>Name</h3><input id='name' v-model='product.name' /></p>
+    <p><h3>Description</h3><input id='description' v-model='product.description' /></p>
+    <p><h3>Price</h3><input id='price' v-model='product.price' /></p>
+    <p><h3>Quantity</h3><input id='quantity' v-model='product.quantity' /></p>
     <p v-for='tag in tags' :key='tag'>
       <label :for="'product-tag-' + tag">{{ tag }}</label>
       <input :id="'product-tag-' + tag" v-model="product.category" type="checkbox" :value="tag" class="checkbox">
