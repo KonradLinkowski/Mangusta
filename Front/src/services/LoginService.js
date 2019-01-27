@@ -61,11 +61,12 @@ export const logInCheck = async () => {
 export const register = async (data) => {
   try {
     let response = await axios.post(`${protocol}://${backendAddress}/auth/register`, data, getHeaders())
-    router.push('/')
+    router.push('/login')
+    console.log('register response: ', response)
     return response.data
   }
   catch (error) {
-    console.log(error)
+    console.log('register action error: ', error)
     return {}
   }
 }
