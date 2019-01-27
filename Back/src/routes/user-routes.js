@@ -7,6 +7,7 @@ const dictionary = require('../store/dictionary.json')
 
 router.route('/auth/register').post((request, response) => {
   const data = request.body
+  console.log('request: ', request)
   const user = new User()
   User.findOne({
     email: data.email
