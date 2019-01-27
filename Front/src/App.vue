@@ -52,7 +52,6 @@ export default {
       }
     },
     logUserOut: function () {
-      console.log('clicked!')
       logOut()
     }
   },
