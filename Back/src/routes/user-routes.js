@@ -2,6 +2,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/user-schema')
+const Product = require('../models/product-schema')
 const dictionary = require('../store/dictionary.json')
 
 
@@ -70,6 +71,20 @@ router.route('/users/find/:email').get((req, res) => {
         res.status(404).send(dictionary.error_list.email_not_found)
       } else {
         res.status(200).send(dictionary.success_list.default)
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    })
+})
+
+router.route('/users/:id/products').get((req, res) => {
+  User.findById(req.params.id)
+  .then(result => {
+      if (result === null) {
+        res.status(404).send(dictionary.error_list.email_not_found)
+      } else {
+        res.json(Product.find({ userId: req.params.id }))
       }
     })
     .catch(err => {
