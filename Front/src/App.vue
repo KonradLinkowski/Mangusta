@@ -4,7 +4,7 @@
       <router-link class='float-left' to="/"><span class='router-link' style='padding: 0;'>
         <img src="./assets/mongoose_256.png" class="logo" alt="Mongoose logo" />
       </span></router-link>
-      <a class='float-right' v-on:click.stop="logUserOut"><span class='router-link menu-icon' id='icon_user'>
+      <a class='float-right' v-on:click="logUserOut"><span class='router-link menu-icon' id='icon_user'>
       </span></a>
       <router-link class='float-right' to="/settings"><span class='router-link menu-icon' id='icon_settings'>
       </span></router-link>

@@ -4,6 +4,7 @@ const router = express.Router()
 const User = require('../models/user-schema')
 const Product = require('../models/product-schema')
 const dictionary = require('../store/dictionary.json')
+const bcrypt = require('bcryptjs')
 
 
 router.route('/auth/register').post(async(request, response) => {
@@ -16,12 +17,12 @@ router.route('/auth/register').post(async(request, response) => {
     password: data.password
   })
   try {
-    const savedUser = await user.save()
-    response.set({
-       // await savedUser.generateToken(),
-      "x-auth-token": 'chuj',
-      "user": JSON.stringify(savedUser)
-    })
+    await user.save()
+    // response.set({
+    //    // await savedUser.generateToken(),
+    //   "x-auth-token": 'sowa',
+    //   "user": JSON.stringify(savedUser)
+    // })
     response.status(201).send(dictionary.success_list.default)
     // response.send(dictionary.success_list.default)
   } catch (error) {
@@ -40,20 +41,29 @@ router.route('/auth/login').post((request, response) => {
     email: data.email,
     password: data.password
   })
-  user.comparePassword(data.password, (compareErr, isMatched) => {
-    console.log('sowa ', compareErr, isMatched)
-    if (compareErr) {
-      console.log(compareErr)
-      response.status(500).send(dictionary.error_list.default)
-    } else if (isMatched) {
-      response.status(200)
-      response.json({
-        // user.generateToken(user)
-          "x-auth-token": 'chuj'
-      })
-    } else {
+
+  User.findOne({ username: data.username })
+  .exec((err, userFound) => {
+    if (err) {
+      // no user with such login
+      response.status(404).send(dictionary.error_list.invalid_password)
+    } else if (!userFound) {
+      // no user
       response.status(404).send(dictionary.error_list.invalid_password)
     }
+    bcrypt.compare(data.password, userFound.password, (error, result) => {
+      if (result === true) {
+        response.json({
+          // user.generateToken(user)
+            "x-auth-token": 'sowa',
+            "user": JSON.stringify(userFound)
+        })
+        response.status(200)
+      } else {
+        console.log(error)
+        response.status(404).send(dictionary.error_list.invalid_password)
+      }
+    })
   })
 })
 

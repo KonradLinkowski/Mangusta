@@ -30,8 +30,8 @@ export const logIn = async (login, password) => {
   } else {
     let response = await axios.post(`${protocol}://${backendAddress}/auth/login`, { "username": login, "password": password })
     console.log(response)
-    localStorage.setItem('mongoose-item', response.headers['x-auth-token'])
-    localStorage.setItem('mongoose-user', JSON.stringify(response.data))
+    localStorage.setItem('mongoose-token', response.data['x-auth-token'])
+    localStorage.setItem('mongoose-user', response.data.user)
     router.push('/')
     return true
   }
@@ -71,14 +71,14 @@ export const register = async (data) => {
 }
 
 export const logOut = async () => {
+  tokenRemoveHandler()
+  router.push('/login')
   try {
     let response = await axios.post(`${protocol}://${backendAddress}/auth/logout`)
     console.log('log out response: ', response)
   } catch (error) {
     console.log('log out error: ', error)
   }
-  tokenRemoveHandler()
-  router.push('/login')
 }
 
 /*eslint-enable*/
