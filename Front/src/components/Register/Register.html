@@ -1,6 +1,6 @@
 <section id='Register' class='outer-container'>
   <article class='container'>
-    <form class='register-form' v-on:submit.prevent>
+    <form class='register-form' v-on:submit.prevent.stop>
       <!--  v-bind:submit.prevent='registerAction' -->
         <h1>Register</h1>
         <h3>Login:</h3><input required id='login' v-model='login' placeholder='Enter your login...'/><br>
