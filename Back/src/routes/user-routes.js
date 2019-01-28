@@ -48,7 +48,7 @@ router.route('/auth/login').post((request, response) => {
       if (result === true) {
         response.json({
           // user.generateToken(user)
-            "x-auth-token": 'sowa',
+            "x-auth-token": 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
             "user": JSON.stringify(userFound)
         })
         response.status(200)
