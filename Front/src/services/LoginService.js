@@ -71,14 +71,14 @@ export const register = async (data) => {
 }
 
 export const logOut = async () => {
+  tokenRemoveHandler()
+  router.push('/login')
   try {
     let response = await axios.post(`${protocol}://${backendAddress}/auth/logout`)
     console.log('log out response: ', response)
   } catch (error) {
     console.log('log out error: ', error)
   }
-  tokenRemoveHandler()
-  router.push('/login')
 }
 
 /*eslint-enable*/

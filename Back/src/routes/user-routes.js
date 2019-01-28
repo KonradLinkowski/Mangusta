@@ -15,12 +15,12 @@ router.route('/auth/register').post(async(request, response) => {
     password: data.password
   })
   try {
-    const savedUser = await user.save()
-    response.set({
-       // await savedUser.generateToken(),
-      "x-auth-token": 'chuj',
-      "user": JSON.stringify(savedUser)
-    })
+    await user.save()
+    // response.set({
+    //    // await savedUser.generateToken(),
+    //   "x-auth-token": 'sowa',
+    //   "user": JSON.stringify(savedUser)
+    // })
     response.status(201).send(dictionary.success_list.default)
     // response.send(dictionary.success_list.default)
   } catch (error) {
@@ -48,7 +48,8 @@ router.route('/auth/login').post((request, response) => {
       response.status(200)
       response.json({
         // user.generateToken(user)
-          "x-auth-token": 'chuj'
+          "x-auth-token": 'sowa',
+          "user": JSON.stringify(user)
       })
     } else {
       response.status(404).send(dictionary.error_list.invalid_password)

@@ -8,8 +8,11 @@ import axios from 'axios'
 //   productDeleteError,
 //   serverError
 // } from '@/assets/notifications'
-import { backendAddress, protocol } from '../assets/dictionary'
+// import { backendAddress, protocol } from '../assets/dictionary'
 import { getHeaders } from './LoginService'
+
+var backendAddress = 'localhost:3000'
+var protocol = 'http'
 
 
 // because of console logs
