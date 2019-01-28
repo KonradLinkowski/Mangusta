@@ -30,8 +30,8 @@ export const logIn = async (login, password) => {
   } else {
     let response = await axios.post(`${protocol}://${backendAddress}/auth/login`, { "username": login, "password": password })
     console.log(response)
-    localStorage.setItem('mongoose-item', response.headers['x-auth-token'])
-    localStorage.setItem('mongoose-user', JSON.stringify(response.data))
+    localStorage.setItem('mongoose-token', response.data['x-auth-token'])
+    localStorage.setItem('mongoose-user', response.data.user)
     router.push('/')
     return true
   }
