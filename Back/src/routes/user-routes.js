@@ -82,13 +82,19 @@ router.route('/users/find/:email').get((req, res) => {
 })
 
 router.route('/user/:id/product').get((req, res) => {
-  console.log(req.params)
   User.findById(req.params.id)
   .then(result => {
     if (result === null) {
       res.status(404).send(dictionary.error_list.email_not_found)
     } else {
-      res.json(Product.find({ userId: req.params.id }))
+      Product.find({ userId: req.params.id })
+      .then(productList => {
+        res.json(productList)
+      })
+      .catch(error => {
+        console.log('product list error: ', error)
+        res.status(400)
+      })
     }
   })
   .catch(err => {
