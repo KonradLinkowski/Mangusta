@@ -15,7 +15,8 @@ export default {
         name: '',
         description: '',
         price: 0.01,
-        quantity: 1
+        quantity: 1,
+        userId: '5c4e31cb48deed083b14259b' // 'aaa' 'aaa'
       },
       tags: []
     }
@@ -68,10 +69,17 @@ export default {
     async getTags () {
       // eslint-disable-next-line
       try { this.tags = await getTagList() } catch (error) { console.log(error) }
+    },
+    async getUserId () {
+      let user = JSON.parse(localStorage.getItem('mongoose-user'))
+      if(user && user._id) {
+        this.userId = user._id
+      }
     }
   },
   mounted() {
     this.getTags()
+    this.getUserId()
   }
 }
 </script>

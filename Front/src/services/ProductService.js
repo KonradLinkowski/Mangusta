@@ -19,6 +19,7 @@ var protocol = 'http'
 /*eslint-disable*/
 export const getProductList = async (searchTerm = '', priceMin = '', priceMax = '', category = [], userId ='') => {
   let query = ''
+  let copy = backendAddress
   if (searchTerm || priceMin || priceMax || category.length) {
     query += '?'
     searchTerm && (query += `search=${searchTerm}&`)
@@ -27,9 +28,9 @@ export const getProductList = async (searchTerm = '', priceMin = '', priceMax = 
     category.length && (query += `category=${category}&`)
     query = query.substring(0, query.length - 1)
   }
-  userId && (backendAddress += `/user/${userId}`)
+  userId && (copy += `/user/${userId}`)
   try {
-    let response = await axios.get(`${protocol}://${backendAddress}/product/${query}`, getHeaders())
+    let response = await axios.get(`${protocol}://${copy}/product/${query}`, getHeaders())
     return response.data
   }
   catch (error) {

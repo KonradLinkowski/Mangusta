@@ -34,13 +34,6 @@ router.route('/auth/register').post(async(request, response) => {
 
 router.route('/auth/login').post((request, response) => {
   const data = request.body
-  const user = new User({
-    username: data.username,
-    firstName: data.firstName,
-    lastName: data.lastName,
-    email: data.email,
-    password: data.password
-  })
 
   User.findOne({ username: data.username })
   .exec((err, userFound) => {
@@ -88,18 +81,19 @@ router.route('/users/find/:email').get((req, res) => {
     })
 })
 
-router.route('/users/:id/products').get((req, res) => {
+router.route('/user/:id/product').get((req, res) => {
+  console.log(req.params)
   User.findById(req.params.id)
   .then(result => {
-      if (result === null) {
-        res.status(404).send(dictionary.error_list.email_not_found)
-      } else {
-        res.json(Product.find({ userId: req.params.id }))
-      }
-    })
-    .catch(err => {
-      console.log(err)
-    })
+    if (result === null) {
+      res.status(404).send(dictionary.error_list.email_not_found)
+    } else {
+      res.json(Product.find({ userId: req.params.id }))
+    }
+  })
+  .catch(err => {
+    console.log(err)
+  })
 })
 
 module.exports = router

@@ -61,7 +61,8 @@ router.route('/user/products/:id').get(async(req, res) => {
 })
 
 router.route('/product/:id').get(async(req, res) => {
-        res.json(await Product.findById(req.params.id))
+    console.log(req.params)
+    res.json(await Product.findById(req.params.id))
 })
 
 router.route('/product').post(async(req, res) => {
@@ -74,6 +75,7 @@ router.route('/product').post(async(req, res) => {
     const newProduct = new Product({
         name: req.body.name,
         price: req.body.price,
+        userId: req.body.userId,
         description: req.body.description,
         quantity: req.body.quantity,
         category: req.body.category
