@@ -39,21 +39,22 @@ export const logIn = async (login, password) => {
 
 export const logInCheck = async () => {
   const token = localStorage.getItem('mongoose-token')
-  if (!token || localStorage.getItem('mongoose-user')) {
+  if (!token || !localStorage.getItem('mongoose-user')) {
     logOut()
     return false
   } else {
-    try {
-      let response = await axios.post(`${protocol}://${backendAddress}/auth/login`, getHeaders())
-      console.log(response)
-      localStorage.setItem('mongoose-item', response.headers['x-auth-token'])
-      localStorage.setItem('mongoose-user', JSON.stringify(response.data))
-      return true
-    } catch (error) {
-      console.log('Login check error: ', error)
-      logOut()
-      return false
-    }
+    return true
+    // try {
+    //   let response = await axios.post(`${protocol}://${backendAddress}/auth/login`, getHeaders())
+    //   console.log(response)
+    //   localStorage.setItem('mongoose-item', response.headers['x-auth-token'])
+    //   localStorage.setItem('mongoose-user', JSON.stringify(response.data))
+    //   return true
+    // } catch (error) {
+    //   console.log('Login check error: ', error)
+    //   logOut()
+    //   return false
+    // }
   }
 }
 

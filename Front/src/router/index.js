@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import { logInCheck } from '../services/LoginService'
+import { logInCheck } from '../services/LoginService'
 // page components
 import Home from '../components/Home/Home'
 import Login from '../components/Login/Login'
@@ -36,14 +36,14 @@ export const router = new Router({
   ]
 })
 
-// router.beforeEach(async (to, from, next) => {
-//   const publicPages = ['/login', '/register', '/404', '/forgot-password']
-//   const authRequired = !publicPages.includes(to.path)
-//   const loggedIn = await(authRequired ? logInCheck() : false)
+router.beforeEach(async (to, from, next) => {
+  const publicPages = ['/login', '/register', '/404', '/forgot-password']
+  const authRequired = !publicPages.includes(to.path)
+  const loggedIn = await(authRequired ? logInCheck() : false)
 
-//   if (authRequired && !loggedIn) {
-//     return next('/login')
-//   }
+  if (authRequired && !loggedIn) {
+    return next('/login')
+  }
 
-//   next()
-// })
+  next()
+})
