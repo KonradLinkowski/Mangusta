@@ -17,7 +17,8 @@ router.route('/auth/register').post(async(request, response) => {
   try {
     const savedUser = await user.save()
     response.set({
-      "x-auth-token": await savedUser.generateToken(),
+       // await savedUser.generateToken(),
+      "x-auth-token": 'chuj',
       "user": JSON.stringify(savedUser)
     })
     response.status(201).send(dictionary.success_list.default)
@@ -29,29 +30,28 @@ router.route('/auth/register').post(async(request, response) => {
 })
 
 
-router.route('/auth/login').post((req, res) => {
-  const userData = req.body
-  User.findOne({
-    email: userData.email
-  }, (err, user) => {
-    if (err) {
-      res.status(500)
-      console.log(err)
-    } else if (user) {
-      user.comparePassword(userData.password, (compareErr, isMatched) => {
-        if (compareErr) {
-          console.log(compareErr)
-        } else if (isMatched) {
-          res.status(200)
-          res.json({
-              "x-auth-token": user.generateToken(user)
-          })
-        } else {
-         res.status(401).send(dictionary.error_list.invalid_password)
-        }
+router.route('/auth/login').post((request, response) => {
+  const data = request.body
+  const user = new User({
+    username: data.username,
+    firstName: data.firstName,
+    lastName: data.lastName,
+    email: data.email,
+    password: data.password
+  })
+  user.comparePassword(data.password, (compareErr, isMatched) => {
+    console.log('sowa ', compareErr, isMatched)
+    if (compareErr) {
+      console.log(compareErr)
+      response.status(500).send(dictionary.error_list.default)
+    } else if (isMatched) {
+      response.status(200)
+      response.json({
+        // user.generateToken(user)
+          "x-auth-token": 'chuj'
       })
     } else {
-      res.status(401).send(dictionary.error_list.email_not_found)
+      response.status(404).send(dictionary.error_list.invalid_password)
     }
   })
 })

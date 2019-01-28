@@ -28,8 +28,7 @@ export const logIn = async (login, password) => {
     console.log('Log in error')
     return false
   } else {
-    const hash = `${login}:${password}`.toString('base64')
-    let response = await axios.post(`${protocol}://${backendAddress}/auth/login`, null, { 'Authorization': `Basic ${hash}` })
+    let response = await axios.post(`${protocol}://${backendAddress}/auth/login`, { "username": login, "password": password })
     console.log(response)
     localStorage.setItem('mongoose-item', response.headers['x-auth-token'])
     localStorage.setItem('mongoose-user', JSON.stringify(response.data))
