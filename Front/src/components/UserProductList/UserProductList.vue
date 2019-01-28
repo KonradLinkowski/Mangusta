@@ -19,7 +19,6 @@ export default {
       // this try-catch is because user can save sth stupid (Not object) as mongoose-user in local storege
       try {
         const user = JSON.parse(localStorage.getItem('mongoose-user'))
-        console.log('SOWA', user)
         if(user && user._id) {
           try {
             this.productList = await getProductList('', '', '', [], user._id)

@@ -31,6 +31,7 @@ export const getProductList = async (searchTerm = '', priceMin = '', priceMax = 
   userId && (copy += `/user/${userId}`)
   try {
     let response = await axios.get(`${protocol}://${copy}/product/${query}`, getHeaders())
+    console.log('sowaa ', response.data)
     return response.data
   }
   catch (error) {
