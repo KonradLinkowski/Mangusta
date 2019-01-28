@@ -1,9 +1,9 @@
 <section id='UserProductList' class='outer-section'>
   <article class='container'>
     <h1>My product list</h1>
-    <UserProduct
+    <Product
       v-for='product in productList'
       v-bind:key='product._id'
-      v-bind:product='product'></UserProduct>
+      v-bind:product='product'></Product>
   </article>
 </section>

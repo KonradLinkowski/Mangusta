@@ -4,7 +4,6 @@ const mongoose = require('mongoose')
 const ProductSchema = new mongoose.Schema({
   name: { type: String, required: true },
   // dunno if it will work like that
-  userId: { type: String, required: true },
   price: {
     type: Number,
     required: true,
@@ -27,7 +26,7 @@ const ProductSchema = new mongoose.Schema({
       message: props => `${props.value} is not a valid quantity!`
     }
   },
-  owner: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     validate: {
